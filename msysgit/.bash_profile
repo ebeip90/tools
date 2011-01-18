@@ -3,16 +3,30 @@ function parse_git_branch {
   echo "("${ref#refs/heads/}")"
 }
 
-export GRAILS_HOME=/c/grails
 
-export PS1='\[\e[0;32m\]\u\[\e[m\] \[\e[1;34m\]\W\[\e[m\]`__git_ps1` \[\e[1;32m\]\$\[\e[m\] \[\e[1;37m\]'
-alias vi=gvim
+export PS1='\[\e[0;32m\]\u@\h\[\e[m\] \[\e[1;34m\]\W\[\e[m\]`__git_ps1` \[\e[1;32m\]\$\[\e[m\] \[\e[1;37m\]'
+
 alias ls='ls --color'
-alias grep='grep --color=always'
-alias chrome='$HOME/Local\ Settings/Application\ Data/Google/Chrome/Application/chrome.exe'
 
-export PATH=/c/python:$GRAILS_HOME/bin:$PATH
+# -- Grep
+if [ "$OSTYPE" != 'msys' ]
+then
+    alias grep='grep --color=auto'
+    export GREP_COLOR=32
+fi
 
-# -- Fix issue 184 with msysgit 'Terminal not fully functional'
-export TERM=msys
+# -- MSYSGIT
+if [ "$OSTYPE" == 'msys' ]
+then
+     # Fix 'terminal not fully functional'
+    export TERM=msys
+    alias chrome='$HOME/Local\ Settings/Application\ Data/Google/Chrome/Application/chrome.exe'
+    export PYTHON_HOME=/c/python
+    export GRAILS_HOME=/c/grails
+    alias vi=gvim
+fi
+
+export PATH=$HOME/bin:$PYTHON_HOME:$GRAILS_HOME/bin:$PATH
+
+
 
