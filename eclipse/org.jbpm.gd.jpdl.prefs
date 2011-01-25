@@ -1,0 +1,7 @@
+#Wed Dec 29 15:30:12 EST 2010
+server\ deployer=/jbpm-console/upload
+password=password
+eclipse.preferences.version=1
+user\ name=user name
+server\ port=8080
+server\ name=localhost
