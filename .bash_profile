@@ -31,10 +31,22 @@ export HISTCONTROL=ignoreboth
 alias antlr='java org.antlr.Tool'
 alias gunit='java org.antlr.gunit.Interp'
 
-alias ls='ls --color'
 alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
+
+# LS and directory colors
+if [ "$OSTYPE" == 'darwin10.0' ]
+then
+    alias ls='gls --color'
+else
+    alias ls='ls --color'
+fi
+export CLICOLOR=1
+export LSCOLORS=dxfxcxdxbxegedabagacad
+
+# -- Git completion
+source ~/.git-completion.sh
 
 # -- Grep
 if [ "$OSTYPE" != 'msys' ]
@@ -62,7 +74,7 @@ if [[ -d /c/ ]]; then
     export GRAILS_HOME=/c/grails
 fi
 
-export PATH=$HOME/bin:$PYTHON_HOME:$GRAILS_HOME/bin:$PATH
+export PATH=$HOME/bin:$PYTHON_HOME:$GRAILS_HOME/bin:/opt/local/bin:/usr/local/bin:$PATH
 
 
 
