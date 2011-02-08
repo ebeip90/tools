@@ -48,8 +48,9 @@ fi
 export CLICOLOR=1
 export LSCOLORS=dxfxcxdxbxegedabagacad
 
-# -- Git completion
+# -- Bash completion
 source ~/.git-completion.sh
+source ~/.django-completion.sh
 
 # -- Grep
 if [ "$OSTYPE" != 'msys' ]
