@@ -34,6 +34,9 @@ alias gunit='java org.antlr.gunit.Interp'
 alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
+# Ruby
+export RUBY_HOME=/usr/local/Cellar/ruby/1.9.2-p0
+export PATH=$PATH:$RUBY_HOME/bin
 
 # LS and directory colors
 if [ "$OSTYPE" == 'darwin10.0' ]
@@ -72,6 +75,7 @@ if [[ -d /c/ ]]; then
     alias chrome='$HOME/Local\ Settings/Application\ Data/Google/Chrome/Application/chrome.exe'
     export PYTHON_HOME=/c/python
     export GRAILS_HOME=/c/grails
+    alias vi=gvim
 fi
 
 export PATH=$HOME/bin:$PYTHON_HOME:$GRAILS_HOME/bin:/opt/local/bin:/usr/local/bin:$PATH
