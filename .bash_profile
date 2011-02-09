@@ -34,9 +34,13 @@ alias gunit='java org.antlr.gunit.Interp'
 alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
+
 # Ruby
 export RUBY_HOME=/usr/local/Cellar/ruby/1.9.2-p0
 export PATH=$PATH:$RUBY_HOME/bin
+
+# Python
+export PYTHONSTARTUP=~/.pythonstartup
 
 # LS and directory colors
 if [ "$OSTYPE" == 'darwin10.0' ]
