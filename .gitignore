@@ -1,0 +1,178 @@
+# ==== C++
+# Compiled Object files
+*.slo
+*.lo
+*.o
+
+# Compiled Dynamic libraries
+*.so
+
+# Compiled Static libraries
+*.lai
+*.la
+*.a
+
+# ==== AUTOTOOLS
+Makefile.in
+/autom4te.cache
+/aclocal.m4
+/compile
+/configure
+/depcomp
+/install-sh
+/missing
+
+# ==== CMAKE
+CMakeCache.txt
+CMakeFiles
+Makefile
+cmake_install.cmake
+install_manifest.txt
+
+# ==== JAVA
+*.class
+
+# ==== PYTHON
+*.py[co]
+
+# Packages
+*.egg
+*.egg-info
+dist
+build
+eggs
+parts
+bin
+develop-eggs
+.installed.cfg
+
+# Installer logs
+pip-log.txt
+
+# Unit test / coverage reports
+.coverage
+.tox
+
+# ==== RAILS
+*.rbc
+*.sassc
+.sass-cache
+capybara-*.html
+.rspec
+/.bundle
+/vendor/bundle
+/log/*
+/tmp/*
+/db/*.sqlite3
+/public/system/*
+/coverage/
+/spec/tmp/*
+**.orig
+config/*.yml
+rerun.txt
+pickle-email-*.html
+
+# ==== RUBY
+coverage
+rdoc
+pkg
+test/tmp
+test/version_tmp
+tmp
+pkg
+*.gem
+*.rbc
+lib/bundler/man
+spec/reports
+.config
+InstalledFiles
+.bundle
+
+# YARD artifacts
+.yardoc
+_yardoc
+doc/
+
+# ==== ARCHIVES
+# It's better to unpack these files and commit the raw source because
+# git has its own built in compression methods.
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.tar.gz
+*.zip
+*.bzip
+
+# ==== CVS
+/CVS/*
+*/CVS/*
+.cvsignore
+*/.cvsignore
+
+# ==== ECLIPSE
+*.pydevproject
+.project
+.metadata
+bin/**
+tmp/**
+tmp/**/*
+*.tmp
+*.bak
+*.swp
+*~.nib
+local.properties
+.classpath
+.settings/
+.loadpath
+
+# CDT-specific
+.cproject
+
+# ==== EMACS
+*~
+\#*\#
+/.emacs.desktop
+/.emacs.desktop.lock
+.elc
+auto-save-list
+tramp
+
+# ==== LINUX
+.*
+!.gitignore
+*~
+*.sw[a-p]
+
+# KDE
+.directory
+
+# ==== OSX 
+.DS_Store
+Icon?
+
+# Thumbnails
+._*
+
+# Files that might appear on external disk
+.Spotlight-V100
+.Trashes
+
+# ==== TEXTMATE
+*.tmproj
+*.tmproject
+tmtags
+
+# ==== VI
+*.swp
+*.swo
+
+# ==== WINDOWS
+# Windows image file caches
+Thumbs.db 
+
+# Folder config file
+Desktop.ini
