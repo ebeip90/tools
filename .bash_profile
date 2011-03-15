@@ -45,12 +45,20 @@ export PYTHONSTARTUP=~/.pythonstartup
 # LS and directory colors
 if [ "$OSTYPE" == 'darwin10.0' ]
 then
-    alias ls='gls --color'
+    alias ls='ls -G'
 else
     alias ls='ls --color'
 fi
+
+alias less='less -R'
+alias more=less
+alias tree='tree -C'
+
+# export LS_OPTIONS='--color=auto'
+# export CLICOLOR='Yes'
+# export LSCOLORS=''
 export CLICOLOR=1
-export LSCOLORS=dxfxcxdxbxegedabagacad
+# export LSCOLORS=dxfxcxdxbxegedabagacad
 
 # -- Bash completion
 source ~/.git-completion.sh
