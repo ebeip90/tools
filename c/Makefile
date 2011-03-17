@@ -12,7 +12,11 @@ INCLUDES = -I.
 LDFLAGS = -L.
 
 # -- Flags --
-CFLAGS		+= -ggdb -O0 $(INCLUDES)
+ifdef DEBUG
+	CFLAGS		+= -ggdb -O0 -DDEBUG=1
+	LDFLAGS		+= -ggdb -O0 -DDEBUG=1
+endif
+CFLAGS 		+= $(INCLUDES)
 
 # -- Input Files --
 C_FILES   = $(wildcard $(SRC)/*.c)
