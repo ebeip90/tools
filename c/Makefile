@@ -27,8 +27,8 @@ all: $(OUT)
 # Output file
 # =========================================================
 $(OUT): $(OBJ_FILES)
-	@echo Building binary $@ from [ $< ]
-	$(CXX) $(LDFLAGS) $< -o $@
+	@echo Building binary $@ from [ $^ ]
+	$(CXX) $(LDFLAGS) $^ -o $@
 
 # Compile source files
 # These rules are rewritten into the dependencies file
