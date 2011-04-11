@@ -1,0 +1,1 @@
+complete -C ~/.ant-completion.pl ant

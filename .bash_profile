@@ -54,22 +54,34 @@ alias less='less -R'
 alias more=less
 alias tree='tree -C'
 
+# -- Git aliases
+alias diff='git diff'
+alias commit='git commit'
+alias log='git log'
+alias lg='git lg'
+alias add='git add'
+alias stash='git stash'
+
 # export LS_OPTIONS='--color=auto'
 # export CLICOLOR='Yes'
 # export LSCOLORS=''
 export CLICOLOR=1
 # export LSCOLORS=dxfxcxdxbxegedabagacad
+export LESSOPEN="| src-hilite-lesspipe.sh %s"
+export LESS=' -R '
+
 
 # -- Bash completion
 source ~/.git-completion.sh
 source ~/.django-completion.sh
+source ~/.grails-completion.sh
+source ~/.ant-completion.sh
 
 # -- Grep
 if [ "$OSTYPE" != 'msys' ]
 then
     # msysgit doesn't understand --color
-    alias grep='grep --color=auto'
-    export GREP_COLOR=32
+    alias grep='GREP_COLOR="32" LANG=C grep --color=auto'
 fi
 
 # -- OS Specific
@@ -78,8 +90,9 @@ if [[ -e /Applications/TextMate.app ]]; then
     # On OSX, use TextMate
     alias vi="mate"
     export EDITOR="mate -w"
-fi
-if [[ -d /c/ ]]; then
+    export GRAILS_HOME="/usr/local/Cellar/grails/$GRAILS_VERSION/libexec"
+    export PATH=/usr/local/Cellar/ruby/1.9.2-p180/bin:$PATH
+elif [[ -d /c/ ]]; then
     # On windows, use gvim
     alias vi="gvim"
 
@@ -92,6 +105,3 @@ if [[ -d /c/ ]]; then
 fi
 
 export PATH=$HOME/bin:$PYTHON_HOME:$GRAILS_HOME/bin:/opt/local/bin:/usr/local/bin:$PATH
-
-
-
