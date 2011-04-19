@@ -2,8 +2,23 @@
 	name = Zach Riggle
 	email = zach@riggle.me
 [alias]
-	lg = log --all --graph --pretty=format:'%Cred%h%Creset -%C(cyan)%d%Creset %s %Cgreen(%cr)%Creset - %aN' --abbrev-commit --date=relative
+	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(cyan)%d%Creset %s %Cgreen(%cr)%Creset - %aN' --abbrev-commit --date=relative
+	simple = log --graph --pretty=format:'%Cred%h%Creset -%C(cyan)%d%Creset %s %Cgreen(%cr)%Creset - %aN' --abbrev-commit --date=relative --simplify-by-decoration 
+	diff = diff --color
+	co = checkout
+	ct = checkout -t
+	ci = commit -v
+	ca = commit -av
+	st = status -sb
+	up = pull
+	track = !git-track
+	prune-all = !git-prune-all
+[branch]
+	autosetupmerge = true
+[push]
+	default = tracking
 [color]
+	ui = auto
 	branch = auto
 	diff = auto
 	status = auto
@@ -24,3 +39,16 @@
 [core]
 	autocrlf = false
 	eof = lf
+	whitespace = blank-at-eol,space-before-tab,blank-at-eof,
+[url "git@github.com:"]
+	pushInsteadOf = github:
+	pushInsteadOf = git://github.com/
+[url "git://github.com/"]
+	insteadOf = github:
+[url "git@gist.github.com:"]
+	pushInsteadOf = gist:
+	pushInsteadOf = git://gist.github.com/
+[url "git://gist.github.com/"]
+	insteadOf = gist:
+[url "git@heroku.com:"]
+	insteadOf = heroku:
