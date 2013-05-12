@@ -50,3 +50,8 @@ export PATH=$PATH:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games
 source ~/.dircolors
 alias start=open
 alias open=xdg-open
+
+# Pwntools
+export PATH=$HOME/pwntools/bin:$PATH
+export PYTHONPATH=$HOME/pwntools/lib:$PYTHONPATH
+
