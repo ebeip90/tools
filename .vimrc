@@ -29,7 +29,11 @@ endif
 :set autoindent
 
 "vividchalk theme, consolas font
-colorscheme vividchalk
+
+syntax enable
+set background=dark
+colorscheme solarized
+
 set gfn=Consolas:h9:cANSI
 
 "make sure that bottom status bar is running.
