@@ -1,107 +1,49 @@
-#!/usr/bin/bash
-function parse_git_branch {
-  ref=$(git-symbolic-ref HEAD 2> /dev/null) || return
-  echo "("${ref#refs/heads/}")"
-}
+#!/usr/bin/env bash
 
-# Generate a random password
-alias randpass="openssl rand -base64 12"
+# Load RVM, if you are using it
+[[ -s $HOME/.rvm/scripts/rvm ]] && source $HOME/.rvm/scripts/rvm
 
-# user@host dir (git-branch)
-export PS1='\[\e[0;32m\]\u@\h\[\e[m\] \[\e[1;34m\]\W\[\e[m\]`__git_ps1` \[\e[1;32m\]\$\[\e[m\] \[\e[1;37m\]'
-PS2='> '
-PS4='+ '
+# Add rvm gems and nginx to the path
+export PATH=$PATH:~/.gem/ruby/1.8/bin:/opt/nginx/sbin
 
+# Path to the bash it configuration
+export BASH_IT=$HOME/.bash_it
 
-# Amazingness for the shell
-shopt -s cdspell # fix spelling for cd
-shopt -s cmdhist # multi-line commands stay multi-line
-shopt -s histappend # don't nuke history file
-export PROMPT_COMMAND='history -a' # save each line to history in order
-shopt -s lithist # multi-line awesomeness
-shopt -s checkwinsize #after each command, update LINES and COLUMNS
+# Lock and Load a custom theme file
+# location /.bash_it/themes/
+export BASH_IT_THEME='bobby'
 
-# History
-export HISTIGNORE="&" # Do not save consecutive duplicates
-export HISTSIZE=10000
-export HISTFILESIZE=10000
-export HISTCONTROL=ignoreboth
+# Your place for hosting Git repos. I use this for private repos.
+export GIT_HOSTING='git@git.domain.com'
 
-# ANTLR
-alias antlr='java org.antlr.Tool'
-alias gunit='java org.antlr.gunit.Interp'
+# Set my editor and git editor
+export EDITOR="/usr/bin/mate -w"
+export GIT_EDITOR='/usr/bin/mate -w'
 
-alias ..='cd ..'
-alias ...='cd ../..'
-alias ....='cd ../../..'
+# Set the path nginx
+export NGINX_PATH='/opt/nginx'
 
-# Ruby
-export RUBY_HOME=/usr/local/Cellar/ruby/1.9.2-p0
-export PATH=$PATH:$RUBY_HOME/bin
-
-# Python
-export PYTHONSTARTUP=~/.pythonstartup
-
-# LS and directory colors
-if [ "$OSTYPE" == 'darwin10.0' ]
-then
-    alias ls='ls -G'
-else
-    alias ls='ls --color'
-fi
-
-alias less='less -R'
-alias more=less
-alias tree='tree -C'
-
-# -- Git aliases
-alias diff='git diff'
-alias commit='git commit'
-alias log='git log'
-alias lg='git lg'
-alias add='git add'
-alias stash='git stash'
-
-# export LS_OPTIONS='--color=auto'
-# export CLICOLOR='Yes'
-# export LSCOLORS=''
-export CLICOLOR=1
-# export LSCOLORS=dxfxcxdxbxegedabagacad
-export LESSOPEN="| src-hilite-lesspipe.sh %s"
-export LESS=' -R '
+# Don't check mail when opening terminal.
+unset MAILCHECK
 
 
-# -- Bash completion
-source ~/.git-completion.sh
-source ~/.django-completion.sh
-source ~/.grails-completion.sh
-source ~/.ant-completion.sh
+# Change this to your console based IRC client of choice.
 
-# -- Grep
-if [ "$OSTYPE" != 'msys' ]
-then
-    # msysgit doesn't understand --color
-    alias grep='GREP_COLOR="32" LANG=C grep --color=auto'
-fi
+export IRC_CLIENT='irssi'
 
-# -- OS Specific
-export EDITOR=vi
-if [[ -e /Applications/TextMate.app ]]; then
-    # On OSX, use TextMate
-    alias vi="mate"
-    export EDITOR="mate -w"
-    export GRAILS_HOME="/usr/local/Cellar/grails/$GRAILS_VERSION/libexec"
-    export PATH=/usr/local/Cellar/ruby/1.9.2-p180/bin:$PATH
-elif [[ -d /c/ ]]; then
-    # On windows, use gvim
-    alias vi="gvim"
+# Set this to the command you use for todo.txt-cli
 
-    # Fix 'terminal not fully functional' on MSYSGIT
-    export TERM=msys
-    alias chrome='$HOME/Local\ Settings/Application\ Data/Google/Chrome/Application/chrome.exe'
-    export PYTHON_HOME=/c/python
-    export GRAILS_HOME=/c/grails
-    alias vi=gvim
-fi
+export TODO="t"
 
-export PATH=$HOME/bin:$PYTHON_HOME:$GRAILS_HOME/bin:/opt/local/bin:/usr/local/bin:$PATH
+# Set vcprompt executable path for scm advance info in prompt (demula theme)
+# https://github.com/xvzf/vcprompt
+#export VCPROMPT_EXECUTABLE=~/.vcprompt/bin/vcprompt
+
+# Load Bash It
+source $BASH_IT/bash_it.sh
+
+unset GREP_OPTIONS
+alias vi=vim
+alias vim='"/c/Program Files/Sublime Text 3/sublime_text.exe" --add'
+
+cd /c/workspace
