@@ -40,15 +40,3 @@
 	autocrlf = false
 	eof = lf
 	whitespace = blank-at-eol,space-before-tab,blank-at-eof,
-[url "git@github.com:"]
-	pushInsteadOf = github:
-	pushInsteadOf = git://github.com/
-[url "git://github.com/"]
-	insteadOf = github:
-[url "git@gist.github.com:"]
-	pushInsteadOf = gist:
-	pushInsteadOf = git://gist.github.com/
-[url "git://gist.github.com/"]
-	insteadOf = gist:
-[url "git@heroku.com:"]
-	insteadOf = heroku:
