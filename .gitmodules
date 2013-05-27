@@ -6,4 +6,4 @@
 	url = https://github.com/pwnies/pwntools.git
 [submodule ".bash_it"]
 	path = .bash_it
-	url = https://github.com/revans/bash-it.git
+	url = https://github.com/zachriggle/bash-it.git
