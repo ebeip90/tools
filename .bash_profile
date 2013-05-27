@@ -32,6 +32,9 @@ export IRC_CLIENT='irssi'
 
 export TODO="t"
 
+# Load Bash It
+source $BASH_IT/bash_it.sh
+
 #
 # Git aliases from the oh-my-zsh plugin, which are not included in the bash-it framework
 #
@@ -78,10 +81,7 @@ alias ggpull='git pull origin $(current_branch)'
 alias ggpush='git push origin $(current_branch)'
 alias ggpnp='git pull origin $(current_branch) && git push origin $(current_branch)'
 alias glp="_git_log_prettily"
-
-
-# Load Bash It
-source $BASH_IT/bash_it.sh
+alias ..='cd ..'
 
 unset GREP_OPTIONS
 alias vi=vim
