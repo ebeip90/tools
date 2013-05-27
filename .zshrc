@@ -55,3 +55,8 @@ alias open=xdg-open
 export PATH=$HOME/pwntools/bin:$PATH
 export PYTHONPATH=$HOME/pwntools/lib:$PYTHONPATH
 
+if [ -f /usr/bin/virtualenvwrapper.sh ];
+then
+    source /usr/bin/virtualenvwrapper.sh
+    workon ctf
+fi
