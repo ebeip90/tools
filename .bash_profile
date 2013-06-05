@@ -87,3 +87,6 @@ unset GREP_OPTIONS
 alias vi=vim
 alias vim='"/c/Program Files/Sublime Text 3/sublime_text.exe" --add'
 alias ls='ls --color'
+alias sl=ls
+alias dc=cd
+alias l=tree
