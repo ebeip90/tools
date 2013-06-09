@@ -33,7 +33,8 @@ sudo apt-get install \
     'zsh' \
     libncurses5{,-dev} \
     linux-headers-$(uname -r) \
-    libgmp-dev
+    libgmp-dev \
+    libpng-dev
 
 #
 # Pythonbrew and its prereqs
@@ -45,7 +46,7 @@ pythonbrew switch  2.7.3
 pythonbrew venv init 
 
 # Python things
-pip install ipython numpy matplotlib gmpy sympy
+pip install ipython numpy matplotlib gmpy sympy pygments
 
 echo '[[ -s "$HOME/.pythonbrew/etc/bashrc" ]] && source "$HOME/.pythonbrew/etc/bashrc"' >> ~/.profile
 echo 'pythonbrew switch 2.7.3' >> ~/.profile
