@@ -17,7 +17,6 @@ sudo apt-get install \
     'libgdbm-dev' \
     'libncursesw5-dev' \
     'libreadline6-*' \
-    'libsqlite3-dev' 
     'libsqlite3-dev' \
     'libssl-dev' \
     'libssl-dev' \
