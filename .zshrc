@@ -51,11 +51,11 @@ source ~/.dircolors
 alias start=open
 alias open=xdg-open
 
+[[ -s "$HOME/.pythonbrew/etc/bashrc" ]] && source "$HOME/.pythonbrew/etc/bashrc" && pythonbrew switch 2.7.3
+
 # Pwntools
 export PATH=$HOME/pwntools/bin:$PATH
 export PYTHONPATH=$HOME/pwntools/lib:$PYTHONPATH
-
-[[ -s "$HOME/.pythonbrew/etc/bashrc" ]] && source "$HOME/.pythonbrew/etc/bashrc" && pythonbrew switch 2.7.3
 
 
 if [ -f /usr/bin/virtualenvwrapper.sh ];
