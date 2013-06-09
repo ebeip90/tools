@@ -55,6 +55,9 @@ alias open=xdg-open
 export PATH=$HOME/pwntools/bin:$PATH
 export PYTHONPATH=$HOME/pwntools/lib:$PYTHONPATH
 
+[[ -s "$HOME/.pythonbrew/etc/bashrc" ]] && source "$HOME/.pythonbrew/etc/bashrc" && pythonbrew switch 2.7.3
+
+
 if [ -f /usr/bin/virtualenvwrapper.sh ];
 then
     source /usr/bin/virtualenvwrapper.sh
