@@ -33,7 +33,8 @@ sudo apt-get install \
     libncurses5{,-dev} \
     linux-headers-$(uname -r) \
     libgmp-dev \
-    libpng-dev
+    libpng-dev \
+    qemu
 
 #
 # Pythonbrew and its prereqs
