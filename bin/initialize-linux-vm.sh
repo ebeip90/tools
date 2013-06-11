@@ -1,7 +1,7 @@
 #!/bin/sh
 
 #
-# TinyURL: This script is available at http://goo.gl/D2Fs2 
+# TinyURL: This script is available at http://goo.gl/3e2B0
 #
 
 #
