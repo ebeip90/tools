@@ -50,8 +50,18 @@ pythonbrew install 2.7.3
 pythonbrew switch  2.7.3
 pythonbrew venv init 
 
+#
 # Python things
-pip install ipython numpy matplotlib gmpy sympy pygments
+#
+# Most of these are prerequisites for pwntools.
+# For whatever reason, they don't all install if you put them on the same line.
+#
+pip install ipython
+pip install numpy
+pip install matplotlib
+pip install gmpy
+pip install sympy
+pip install pygments
 
 echo '[[ -s "$HOME/.pythonbrew/etc/bashrc" ]] && source "$HOME/.pythonbrew/etc/bashrc"' >> ~/.profile
 echo 'pythonbrew switch 2.7.3' >> ~/.profile
