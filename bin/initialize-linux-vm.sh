@@ -1,6 +1,10 @@
 #!/bin/sh
 
 #
+# TinyURL: This script is available at http://goo.gl/D2Fs2 
+#
+
+#
 # Binaries and prerequisites
 #
 sudo apt-get install \
@@ -34,7 +38,8 @@ sudo apt-get install \
     linux-headers-$(uname -r) \
     libgmp-dev \
     libpng-dev \
-    qemu
+    qemu \
+    ssh
 
 #
 # Pythonbrew and its prereqs
