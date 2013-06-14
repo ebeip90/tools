@@ -7,7 +7,7 @@ make batch=yes install clean
 cd /usr/ports
 svn update
 
-cd /usr/ports/*/ssh
+cd /usr/ports/*/git
 make clean
 make batch=yes install clean
 
