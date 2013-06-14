@@ -23,6 +23,10 @@ cd /usr/ports/*/zsh
 make clean
 make batch=yes install clean
 
+cd /usr/ports/*/nmap
+make clean
+make batch=yes install clean
+
 cd /usr/ports/*/portaudit
 
 rehash
