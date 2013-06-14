@@ -43,6 +43,10 @@ cd /usr/ports/*/bzip
 make clean
 make batch=yes install clean
 
+cd /usr/ports/*/binutils
+make clean
+make batch=yes install clean
+
 
 
 cd /usr/ports/*/portaudit
