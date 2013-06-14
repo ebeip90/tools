@@ -27,6 +27,19 @@ cd /usr/ports/*/nmap
 make clean
 make batch=yes install clean
 
+cd /usr/ports/*/nasm
+make clean
+make batch=yes install clean
+
+cd /usr/ports/*/gdb
+make clean
+make batch=yes install clean
+
+cd /usr/ports/*/llvm
+make clean
+make batch=yes install clean
+
+
 cd /usr/ports/*/portaudit
 
 rehash
