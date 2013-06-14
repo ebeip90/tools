@@ -39,6 +39,11 @@ cd /usr/ports/*/llvm
 make clean
 make batch=yes install clean
 
+cd /usr/ports/*/bzip
+make clean
+make batch=yes install clean
+
+
 
 cd /usr/ports/*/portaudit
 
