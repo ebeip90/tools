@@ -81,7 +81,8 @@ git submodule update --init --recursive
 #
 # Install pwntools
 #
-sudo pwntools/install.sh
+cd ~/pwntools
+sudo ./install.sh
 
 #
 # Use zsh
