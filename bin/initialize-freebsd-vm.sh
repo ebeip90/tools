@@ -51,6 +51,11 @@ cd /usr/ports/*/binutils
 make clean
 make batch=yes install clean
 
+cd /usr/ports/*/py-matplotlib
+make clean
+make batch=yes install clean
+
+
 
 
 cd /usr/ports/*/portaudit
