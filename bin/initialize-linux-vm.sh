@@ -48,7 +48,10 @@ sudo apt-get -y install \
     ssh \
     pq{,-dev} \
     libpcap-dev \
-    subversion
+    subversion \
+    ack-grep \
+    realpath \
+    tree
 
 #
 # Pythonbrew and its prereqs
