@@ -40,7 +40,7 @@ ZSH_THEME="sunrise"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git history-substring-search zsh-syntax-highlighting colored-man colorize command-not-found compleat cp extract gem git git-extras npm pip python debian)
+plugins=(git history-substring-search zsh-syntax-highlighting colored-man colorize command-not-found compleat cp extract gem git git-extras npm pip python debian rvm gem ruby)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -63,3 +63,5 @@ then
     source /usr/bin/virtualenvwrapper.sh
     workon ctf
 fi
+
+PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
