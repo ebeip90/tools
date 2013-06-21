@@ -1,6 +1,10 @@
 #!/bin/sh
 
 #
+# Setup script for Ubuntu and Debian VMs.
+#
+
+#
 # TinyURL: This script is available at http://goo.gl/3e2B0
 #
 
@@ -8,8 +12,8 @@
 # Binaries and prerequisites
 #
 sudo apt-get update
-sudo apt-get upgrade
-sudo apt-get install \
+sudo apt-get dist-upgrade
+sudo apt-get -y install \
     'binutils' \
     'build-essential' \
     'curl' \
@@ -41,7 +45,9 @@ sudo apt-get install \
     libgmp-dev \
     libpng-dev \
     qemu \
-    ssh
+    ssh \
+    pq{,-dev} \
+    libpcap-dev
 
 #
 # Pythonbrew and its prereqs
@@ -70,6 +76,13 @@ echo 'pythonbrew switch 2.7.3' >> ~/.profile
 
 
 #
+# Ruby things
+#
+curl -L https://get.rvm.io | bash
+rvm install ruby-1.9.3-p429
+gem install bundler
+
+#
 # Set up home directory repo
 #
 cd ~
@@ -83,6 +96,12 @@ git submodule update --init --recursive
 #
 cd ~/pwntools
 sudo ./install.sh
+
+#
+# Set up metasploit
+#
+cd ~/metasploit-framework
+gem install bundler
 
 #
 # Use zsh
