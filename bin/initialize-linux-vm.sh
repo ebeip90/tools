@@ -47,7 +47,8 @@ sudo apt-get -y install \
     qemu \
     ssh \
     pq{,-dev} \
-    libpcap-dev
+    libpcap-dev \
+    subversion
 
 #
 # Pythonbrew and its prereqs
