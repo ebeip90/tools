@@ -7,3 +7,6 @@
 [submodule ".bash_it"]
 	path = .bash_it
 	url = https://github.com/zachriggle/bash-it.git
+[submodule "metasploit-framework"]
+	path = metasploit-framework
+	url = https://github.com/rapid7/metasploit-framework.git
