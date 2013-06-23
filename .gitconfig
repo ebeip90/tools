@@ -29,14 +29,24 @@
 [color "diff"]
 	meta = yellow bold
 	frag = magenta bold
-	old = red bold
-	new = green bold
+	old = red
+	new = yellow
 [color "status"]
 	added = yellow
 	changed = green
 	untracked = cyan
 	renamed = pink
+[color "grep"]
+	match = green
+	filename = blue
+	function = yellow bold
 [core]
 	autocrlf = false
 	eof = lf
-	whitespace = blank-at-eol,space-before-tab,blank-at-eof,
+	whitespace = blank-at-eol,space-before-tab,blank-at-eof,cr-at-eol
+[diff]
+	tool = vimdiff
+[filter "mixedtext"]
+    clean = iconv -sc -f $(file -b --mime-encoding %f) -t utf-8
+    smudge = iconv -sc -f utf-8 -t $(file -b --mime-encoding %f)
+    required
