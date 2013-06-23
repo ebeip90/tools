@@ -41,6 +41,7 @@ source $BASH_IT/bash_it.sh
 alias g='git'
 alias gs='git status -sb'
 alias gd='git diff'
+alias gdd='git diff -w --word-diff=color'
 alias gl='git pull'
 alias gup='git pull --rebase'
 alias gp='git push'
