@@ -7,7 +7,6 @@
 #
 # TinyURL: This script is available at http://goo.gl/3e2B0
 #
-
 #
 # Binaries and prerequisites
 #
@@ -41,7 +40,6 @@ sudo apt-get -y install \
     'zlib1g-dev' \
     'zsh' \
     libncurses5{,-dev} \
-    linux-headers-$(uname -r) \
     libgmp-dev \
     libpng-dev \
     qemu \
@@ -51,8 +49,8 @@ sudo apt-get -y install \
     subversion \
     ack-grep \
     realpath \
-    tree
-
+    tree \
+    linux-headers-$(uname -r)
 #
 # Pythonbrew and its prereqs
 #
@@ -101,11 +99,20 @@ git submodule update --init --recursive
 cd ~/pwntools
 sudo ./install.sh
 
+
+#
+# Metasploit requirements --> RVM
+# 
+curl -L https://get.rvm.io | bash
+
+
+
 #
 # Set up metasploit
 #
 cd ~/metasploit-framework
 gem install bundler
+bundle install
 
 #
 # Use zsh
