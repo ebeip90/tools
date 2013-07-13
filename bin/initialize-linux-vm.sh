@@ -11,7 +11,7 @@
 # Binaries and prerequisites
 #
 sudo apt-get update
-sudo apt-get dist-upgrade
+sudo apt-get -y dist-upgrade
 sudo apt-get -y install \
     'binutils' \
     'build-essential' \
@@ -92,7 +92,7 @@ gem install bundler
 cd ~
 git init
 git remote add origin https://github.com/zachriggle/tools.git
-git pull origin master
+git pull -f origin master
 git submodule update --init --recursive
 
 #
