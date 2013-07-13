@@ -45,7 +45,6 @@ sudo apt-get -y install \
     libpng-dev \
     qemu \
     ssh \
-    pq{,-dev} \
     libpcap-dev \
     subversion \
     ack-grep \
