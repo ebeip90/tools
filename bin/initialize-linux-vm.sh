@@ -51,7 +51,7 @@ sudo apt-get -y install \
     ack-grep \
     realpath \
     tree \
-    linux-headers-$(uname -r)
+    linux-headers-$(uname -r) || (echo Failed && exit)
 #
 # Pythonbrew and its prereqs
 #
