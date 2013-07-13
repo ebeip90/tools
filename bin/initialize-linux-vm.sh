@@ -44,7 +44,7 @@ sudo apt-get -y install \
     libpng-dev \
     qemu \
     ssh \
-    pq{,-dev} \
+    postgresql{,-dev} \
     libpcap-dev \
     subversion \
     ack-grep \
