@@ -15,6 +15,7 @@ sudo apt-get dist-upgrade
 sudo apt-get -y install \
     'binutils' \
     'build-essential' \
+    'patch' \
     'curl' \
     'emacs' \
     'git-core' \
