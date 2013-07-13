@@ -40,6 +40,7 @@ sudo apt-get -y install \
     'zlib1g-dev' \
     'zlib1g-dev' \
     'zsh' \
+    libpq-dev \
     libncurses5{,-dev} \
     libgmp-dev \
     libpng-dev \
@@ -50,7 +51,8 @@ sudo apt-get -y install \
     ack-grep \
     realpath \
     tree \
-    linux-headers-$(uname -r) || (echo Failed && exit)
+    linux-headers-$(uname -r)
+    
 #
 # Pythonbrew and its prereqs
 #
