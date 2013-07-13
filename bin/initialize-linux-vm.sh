@@ -102,12 +102,6 @@ cd ~/pwntools
 sudo ./install.sh
 
 
-#
-# Metasploit requirements --> RVM
-# 
-curl -L https://get.rvm.io | bash
-
-
 
 #
 # Set up metasploit
