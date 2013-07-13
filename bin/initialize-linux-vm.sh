@@ -73,8 +73,8 @@ pip install gmpy
 pip install sympy
 pip install pygments
 
-echo '[[ -s "$HOME/.pythonbrew/etc/bashrc" ]] && source "$HOME/.pythonbrew/etc/bashrc"' >> ~/.profile
-echo 'pythonbrew switch 2.7.3' >> ~/.profile
+# echo '[[ -s "$HOME/.pythonbrew/etc/bashrc" ]] && source "$HOME/.pythonbrew/etc/bashrc"' >> ~/.profile
+# echo 'pythonbrew switch 2.7.3' >> ~/.profile
 
 
 #
