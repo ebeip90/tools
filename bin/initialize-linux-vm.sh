@@ -83,6 +83,7 @@ pip install pygments
 # Ruby things
 #
 curl -L https://get.rvm.io | bash
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" 
 rvm install ruby-1.9.3-p429
 gem install bundler
 
