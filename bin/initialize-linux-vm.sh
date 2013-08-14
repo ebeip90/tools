@@ -5,7 +5,7 @@
 #
 
 #
-# TinyURL: This script is available at http://goo.gl/3e2B0
+# TinyURL: This script is available at curl -L http://goo.gl/3e2B0 | bash
 #
 #
 # Binaries and prerequisites
@@ -94,6 +94,7 @@ cd ~
 git init
 git remote add origin https://github.com/zachriggle/tools.git
 git pull -f origin master
+git reset --hard
 git submodule update --init --recursive
 
 #
