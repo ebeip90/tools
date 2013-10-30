@@ -1,10 +1,20 @@
 #!/usr/bin/env python
 
-import os, sys, shutil, argparse
+import os, sys, shutil, argparse, hashlib
 
 from os.path import relpath, join, splitext, exists
 
-args = {}
+args   = {}
+hashes = []
+
+def hashfile(filename, blocksize=65536):
+    hasher = hashlib.md5()
+    afile = open(filename)
+    buf = afile.read(blocksize)
+    while len(buf) > 0:
+        hasher.update(buf)
+        buf = afile.read(blocksize)
+    return hasher.hexdigest()
 
 def callback(args, dir, files):
     rel     = relpath(dir, args['src'])
@@ -18,8 +28,12 @@ def callback(args, dir, files):
             if not exists(dstpath):
                 os.makedirs(dstpath)
 
-            print join(rel, f)
-            shutil.copy(srcpath, dstpath)
+            md5 = hashfile(srcpath)
+            if md5 not in hashes:
+                shutil.copy(srcpath, dstpath)
+                hashes.append(md5)
+            else:
+                print join(rel, f)
 
 
 def main(src, dst, extensions):

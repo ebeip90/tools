@@ -4,7 +4,7 @@ import string, sys, argparse
 
 p = argparse.ArgumentParser()
 
-p.add_argument('-s','--style', choices=['big', 'small', 'tiny'], default='big')
+p.add_argument('-s','--style')
 p.add_argument('words', nargs='+')
 
 args = p.parse_args()
@@ -19,11 +19,10 @@ args.words.append('')
 
 phrase = ' '.join(args.words).upper()
 
-if args.style=='big':
-    print "//" + 78*'*'
-    print "//{: ^78s}".format(phrase)
-    print "//" + 78*'*'
-if args.style=='small':
-    print "//{:-^78s}".format(phrase)
-if args.style=='tiny':
-    print "// -----" + phrase + "-----"
+print "//" + 78*'*'
+print "//{: ^78s}".format(phrase)
+print "//" + 78*'*'
+print
+print "//{:-^78s}".format(phrase)
+print
+print "// -----" + phrase + "-----"

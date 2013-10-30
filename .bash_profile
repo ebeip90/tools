@@ -83,6 +83,7 @@ alias ggpush='git push origin $(current_branch)'
 alias ggpnp='git pull origin $(current_branch) && git push origin $(current_branch)'
 alias glp="_git_log_prettily"
 alias ..='cd ..'
+alias cls=clear
 
 unset GREP_OPTIONS
 alias vi=vim
