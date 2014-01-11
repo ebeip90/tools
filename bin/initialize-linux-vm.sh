@@ -113,6 +113,16 @@ gem install bundler
 bundle install
 
 #
+# Set up binwalk
+#
+pushd 
+cd /tmp
+git clone https://github.com/devttys0/binwalk.git
+cd binwalk/src
+sudo bash easy_install.sh
+popd
+
+#
 # Use zsh
 #
 chsh -s $(which zsh) $user
