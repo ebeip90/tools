@@ -40,7 +40,16 @@ ZSH_THEME="sunrise"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git history-substring-search zsh-syntax-highlighting colored-man colorize command-not-found compleat cp extract gem git git-extras npm pip python debian rvm gem ruby z brew)
+plugins=(git history-substring-search zsh-syntax-highlighting colored-man colorize command-not-found compleat cp extract gem git git-extras npm pip python rvm gem ruby z brew)
+
+export OS='unknown'
+uname -a | grep 'Debian' >/dev/null && export OS="mac"
+uname -a | grep 'xnu'    >/dev/null && export OS="mac"
+
+if [[ "$OS" == "debian" ]]; then
+	plugins += (debian)
+	alias open=xdg-open
+fi
 
 source $ZSH/oh-my-zsh.sh
 
@@ -49,7 +58,6 @@ export PATH=$PATH:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games
 
 source ~/.dircolors
 alias start=open
-alias open=xdg-open
 
 [[ -s "$HOME/.pythonbrew/etc/bashrc" ]] && source "$HOME/.pythonbrew/etc/bashrc" && pythonbrew switch 2.7.3
 
