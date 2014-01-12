@@ -12,7 +12,7 @@ sudo apt-get update
 sudo apt-get -y dist-upgrade
 
 while read -r package;
-do echo sudo apt-get install -qy $package
+do sudo apt-get install -qy $(sh -c "echo $package; exit")
 done << EOF
 binutils
 build-essential
@@ -20,40 +20,35 @@ patch
 curl
 emacs
 git-core
-libbz2-dev
-libbz2-dev
-libexpat1-dev
+libbz2-*
+libexpat1-*
 libgdb-*
-libgdbm-dev
-libgdbm-dev
-libncursesw5-dev
+libgdbm-*
+libncurses*
 libreadline6-*
 libsqlite3-dev
-libssl-dev
-libssl-dev
-libxml2
-libxml2-dev
+libssl-*
+libxml2-*
 libxslt1-dev
 nasm
 tk-dev
 vim
 yodl
-zlib1g-dev
-zlib1g-dev
+zlib1g*
 zsh
 libpq-dev
-libncurses5{,-dev}
-libgmp-dev
-libpng-dev
+libncurses5-*
+libgmp*
+libpng*
 qemu-system-arm
 ssh
-libpcap-dev
+libpcap*
 subversion
 ack-grep
 realpath
 tree
 open-vm-tools
-linux-headers-$(uname -r)
+linux-headers-*
 EOF
 
 
