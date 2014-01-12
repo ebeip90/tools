@@ -19,49 +19,49 @@ sudo apt-get -y dist-upgrade
 while read -r package;
 do sudo apt-get install -qq --yes $package
 done << EOF
+ack-grep
 binutils
 build-essential
-patch
 curl
+dissy
 emacs
+EOF
+fortune
 git-core
 libbz2-dev
 libexpat1-dev
 libgdb-dev
 libgdbm-dev
+libgmp-dev
 libncurses5-dev
 libncursesw5-dev
+libpcap-dev
+libpng-dev
+libpq-dev
 libreadline6-dev
 libsqlite3-dev
 libssl-dev
 libxml2
 libxml2-dev
 libxslt1-dev
+linux-headers-$(uname -r)
 nasm
+open-vm-tools
+openssh-blacklist
+openssh-blacklist-extra
+openssh-server
+patch
+qemu-system-arm
+realpath
+shellnoob
+ssh
+subversion
 tk-dev
+tree
 vim
 yodl
 zlib1g-dev
 zsh
-libpq-dev
-libgmp-dev
-libpng-dev
-qemu-system-arm
-ssh
-libpcap-dev
-subversion
-ack-grep
-realpath
-tree
-open-vm-tools
-linux-headers-$(uname -r)
-openssh-server
-openssh-blacklist
-openssh-blacklist-extra
-shellnoob
-dissy
-fortune
-EOF
 sudo apt-get --yes --silent autoremove
 
 #
@@ -73,6 +73,25 @@ PubkeyAuthentication yes
 PermitRootLogin no
 PasswordAuthentication no
 EOF"
+sudo service ssh restart
+
+#
+# Put the IP address on the login screen#
+sudo touch /etc/network/if-up.d/issue
+sudo chmod 777 /etc/network/if-up.d/issue
+cat >>/etc/network/if-up.d/issue <<EOF
+rm /etc/issue
+lsb_release -ds >> /etc/issue
+ifconfig eth0 \
+    | grep "inet addr" \
+    | grep -v "127.0.0.1"  \
+    | awk '{ print \$2 }' \
+    | awk -F: '{ print "ip address " \$2 }' \
+    >> /etc/issue
+echo '\\\\n \\l' >> /etc/issue
+EOF
+sudo chmod 755 /etc/network/if-up.d/issue
+
 
 #
 # Set up home directory repo
@@ -146,4 +165,4 @@ popd
 #
 # Use zsh
 #
-chsh -s $(which zsh) $user
+sudo chsh -s $(which zsh) $user
