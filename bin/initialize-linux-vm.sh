@@ -2,58 +2,61 @@
 
 #
 # Setup script for Ubuntu and Debian VMs.
-#
-
-#
 # TinyURL: This script is available at curl -L http://goo.gl/3e2B0 | bash
 #
+
 #
 # Binaries and prerequisites
 #
 sudo apt-get update
 sudo apt-get -y dist-upgrade
-sudo apt-get -y install \
-    'binutils' \
-    'build-essential' \
-    'patch' \
-    'curl' \
-    'emacs' \
-    'git-core' \
-    'libbz2-dev' \
-    'libbz2-dev' \
-    'libexpat1-dev' \
-    'libgdb-*' \
-    'libgdbm-dev' \
-    'libgdbm-dev' \
-    'libncursesw5-dev' \
-    'libreadline6-*' \
-    'libsqlite3-dev' \
-    'libssl-dev' \
-    'libssl-dev' \
-    'libxml2' \
-    'libxml2-dev' \
-    'libxslt1-dev' \
-    'nasm' \
-    'tk-dev' \
-    'vim' \
-    'yodl' \
-    'zlib1g-dev' \
-    'zlib1g-dev' \
-    'zsh' \
-    libpq-dev \
-    libncurses5{,-dev} \
-    libgmp-dev \
-    libpng-dev \
-    qemu-system-arm \
-    ssh \
-    libpcap-dev \
-    subversion \
-    ack-grep \
-    realpath \
-    tree \
-    linux-headers-$(uname -r)
- 
- 
+
+while read -r package;
+do echo sudo apt-get install -qy $package
+done << EOF
+binutils
+build-essential
+patch
+curl
+emacs
+git-core
+libbz2-dev
+libbz2-dev
+libexpat1-dev
+libgdb-*
+libgdbm-dev
+libgdbm-dev
+libncursesw5-dev
+libreadline6-*
+libsqlite3-dev
+libssl-dev
+libssl-dev
+libxml2
+libxml2-dev
+libxslt1-dev
+nasm
+tk-dev
+vim
+yodl
+zlib1g-dev
+zlib1g-dev
+zsh
+libpq-dev
+libncurses5{,-dev}
+libgmp-dev
+libpng-dev
+qemu-system-arm
+ssh
+libpcap-dev
+subversion
+ack-grep
+realpath
+tree
+open-vm-tools
+linux-headers-$(uname -r)
+EOF
+
+
 #
 # Set up home directory repo
 #
