@@ -25,7 +25,6 @@ build-essential
 curl
 dissy
 emacs
-EOF
 fortune
 git-core
 libbz2-dev
@@ -63,6 +62,8 @@ yodl
 zlib1g-dev
 zsh
 sudo apt-get --yes --silent autoremove
+EOF
+
 
 #
 # Configure SSH
