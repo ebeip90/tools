@@ -76,9 +76,6 @@ eval "$(pyenv init -)"
 #
 # Install a local version of Python.
 #
-# Ensure that we fetch it over HTTPS, vs. the default HTTP.
-#
-export PYTHON_BUILD_MIRROR_URL="https://github.com/yyuu/yyuu.github.com/blob/master/pythons/"
 pyenv install 2.7.6
 pyenv local 2.7.6
 
@@ -103,9 +100,9 @@ pip install pygments
 #
 # Ruby things
 #
-curl -L https://get.rvm.io | bash
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" 
-rvm install ruby-1.9.3-p429
+git clone https://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-build
+PATH="$PATH:$HOME/.rbenv/shims:$HOME/.rbenv/bin"
+rbenv install ruby-1.9.3-p429
 gem install bundler
 
 
@@ -114,7 +111,6 @@ gem install bundler
 #
 cd ~/pwntools
 sudo ./install.sh
-
 
 
 #
