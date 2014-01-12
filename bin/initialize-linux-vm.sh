@@ -13,8 +13,8 @@ sudo sed -i.backup 's/us.archive.ubuntu.com/mirror.anl.gov/g' /etc/apt/sources.l
 #
 # Binaries and prerequisites
 #
-sudo apt-get update
-sudo apt-get -y dist-upgrade
+sudo apt-get -q update
+sudo apt-get -y -q dist-upgrade
 
 while read -r package;
 do sudo apt-get install -qq --yes $package
@@ -135,7 +135,7 @@ pip install pygments
 #
 git clone https://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-build
 PATH="$PATH:$HOME/.rbenv/shims:$HOME/.rbenv/bin"
-rbenv install ruby-1.9.3-p429
+rbenv install ruby-1.9.3-p484
 gem install bundler
 
 
@@ -149,19 +149,18 @@ sudo ./install.sh
 #
 # Set up metasploit
 #
+git clone https://github.com/rapid7/metasploit-framework.git
 cd ~/metasploit-framework
+git checkout release
 gem install bundler
 bundle install
 
 #
 # Set up binwalk
 #
-pushd 
-cd /tmp
 git clone https://github.com/devttys0/binwalk.git
-cd binwalk/src
-sudo bash easy_install.sh
-popd
+sudo binwalk/src/easy_install.sh
+rm -rf /tmp/binwalk
 
 #
 # Use zsh
