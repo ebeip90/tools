@@ -10,3 +10,6 @@
 [submodule ".zprezto"]
 	path = .zprezto
 	url = https://github.com/zachriggle/prezto.git
+[submodule ".pyenv"]
+	path = .pyenv
+	url = git://github.com/yyuu/pyenv.git
