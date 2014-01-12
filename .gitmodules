@@ -1,6 +1,3 @@
-[submodule ".oh-my-zsh"]
-	path = .oh-my-zsh
-	url = https://github.com/zachriggle/oh-my-zsh.git
 [submodule "pwntools"]
 	path = pwntools
 	url = https://github.com/pwnies/pwntools.git
