@@ -52,15 +52,29 @@ sudo apt-get -y install \
     realpath \
     tree \
     linux-headers-$(uname -r)
-    
+ 
+ 
 #
-# Pythonbrew and its prereqs
+# Set up home directory repo
 #
-curl -kL https://raw.github.com/utahta/pythonbrew/master/pythonbrew-install | bash
-source ~/.pythonbrew/etc/bashrc
-pythonbrew install 2.7.3
-pythonbrew switch  2.7.3
-pythonbrew venv init 
+# This should set up pyenv and a bunch of other things
+#
+cd ~
+git init
+git remote add origin https://github.com/zachriggle/tools.git
+git pull -f origin master
+git reset --hard
+git submodule update --init --recursive
+
+# Force pyenv for this script
+PYENV_ROOT="$HOME/.pyenv"
+PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
+
+# Install the correct python
+pyenv install 2.7.6
+pyenv local 2.7.6
+
 
 #
 # Python things
@@ -87,15 +101,6 @@ curl -L https://get.rvm.io | bash
 rvm install ruby-1.9.3-p429
 gem install bundler
 
-#
-# Set up home directory repo
-#
-cd ~
-git init
-git remote add origin https://github.com/zachriggle/tools.git
-git pull -f origin master
-git reset --hard
-git submodule update --init --recursive
 
 #
 # Install pwntools
