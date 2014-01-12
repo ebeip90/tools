@@ -66,12 +66,19 @@ git pull -f origin master
 git reset --hard
 git submodule update --init --recursive
 
+#
 # Force pyenv for this script
+#
 PYENV_ROOT="$HOME/.pyenv"
 PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
 
-# Install the correct python
+#
+# Install a local version of Python.
+#
+# Ensure that we fetch it over HTTPS, vs. the default HTTP.
+#
+export PYTHON_BUILD_MIRROR_URL="https://github.com/yyuu/yyuu.github.com/blob/master/pythons/"
 pyenv install 2.7.6
 pyenv local 2.7.6
 
