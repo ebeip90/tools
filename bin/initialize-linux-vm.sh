@@ -44,7 +44,7 @@ sudo apt-get -y install \
     libncurses5{,-dev} \
     libgmp-dev \
     libpng-dev \
-    qemu \
+    qemu-system-arm \
     ssh \
     libpcap-dev \
     subversion \
