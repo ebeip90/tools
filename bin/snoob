@@ -1234,7 +1234,10 @@ int main() {
 
     @staticmethod
     def get_kernel():
-        return os.popen('uname -s').read().strip()
+        kernel = os.popen('uname -s').read().strip()
+        if kernel == 'Darwin': 
+            kernel = 'Linux'
+        return kernel
 
     @staticmethod
     def get_hardware():
