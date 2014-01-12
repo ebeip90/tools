@@ -10,3 +10,6 @@
 [submodule "metasploit-framework"]
 	path = metasploit-framework
 	url = https://github.com/rapid7/metasploit-framework.git
+[submodule ".zprezto"]
+	path = .zprezto
+	url = git@github.com:zachriggle/prezto.git
