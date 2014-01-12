@@ -1,1 +1,1 @@
-/Users/zriggle/.zprezto/runcoms/zlogout
+.zprezto/runcoms/zlogout
