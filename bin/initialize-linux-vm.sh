@@ -12,7 +12,7 @@ sudo apt-get update
 sudo apt-get -y dist-upgrade
 
 while read -r package;
-do sudo apt-get install -qy $(sh -c "echo $package; exit")
+do sudo apt-get install -qq --yes $package
 done << EOF
 binutils
 build-essential
@@ -20,37 +20,54 @@ patch
 curl
 emacs
 git-core
-libbz2-*
-libexpat1-*
-libgdb-*
-libgdbm-*
-libncurses*
-libreadline6-*
+libbz2-dev
+libexpat1-dev
+libgdb-dev
+libgdbm-dev
+libncurses5-dev
+libncursesw5-dev
+libreadline6-dev
 libsqlite3-dev
-libssl-*
-libxml2-*
+libssl-dev
+libxml2
+libxml2-dev
 libxslt1-dev
 nasm
 tk-dev
 vim
 yodl
-zlib1g*
+zlib1g-dev
 zsh
 libpq-dev
-libncurses5-*
-libgmp*
-libpng*
+libgmp-dev
+libpng-dev
 qemu-system-arm
 ssh
-libpcap*
+libpcap-dev
 subversion
 ack-grep
 realpath
 tree
 open-vm-tools
-linux-headers-*
+linux-headers-$(uname -r)
+openssh-server
+openssh-blacklist
+openssh-blacklist-extra
+shellnoob
+dissy
+fortune
 EOF
+sudo apt-get --yes --silent autoremove
 
+#
+# Configure SSH
+#
+sudo sh -c "cat >> /etc/ssh/sshd_config <<EOF
+UsePAM no
+PubkeyAuthentication yes
+PermitRootLogin no
+PasswordAuthentication no
+EOF"
 
 #
 # Set up home directory repo
@@ -81,19 +98,12 @@ pyenv local 2.7.6
 #
 # Python things
 #
-# Most of these are prerequisites for pwntools.
-# For whatever reason, they don't all install if you put them on the same line.
-#
 pip install ipython
 pip install numpy
 pip install matplotlib
 pip install gmpy
 pip install sympy
 pip install pygments
-
-# echo '[[ -s "$HOME/.pythonbrew/etc/bashrc" ]] && source "$HOME/.pythonbrew/etc/bashrc"' >> ~/.profile
-# echo 'pythonbrew switch 2.7.3' >> ~/.profile
-
 
 #
 # Ruby things
