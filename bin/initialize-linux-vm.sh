@@ -175,4 +175,4 @@ rm -rf /tmp/binwalk
 #
 # Use zsh
 #
-sudo chsh -s $(which zsh) $user
+sudo chsh -s $(which zsh) $(whoami)
