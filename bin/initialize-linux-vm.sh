@@ -67,13 +67,22 @@ sudo apt-get --yes --silent autoremove
 
 
 #
-# Configure SSH
+# Configure SSH for pubkey only
 #
-sudo sh -c "cat >> /etc/ssh/sshd_config <<EOF
-UsePAM no
-PubkeyAuthentication yes
-PermitRootLogin no
-PasswordAuthentication no
+sudo sh -c "cat > /etc/ssh/sshd_config <<EOF
+Protocol                        2
+Port                            22
+PubkeyAuthentication            yes
+
+UsePAM                          no
+PermitRootLogin                 no
+PasswordAuthentication          no
+PermitEmptyPasswords            no
+KerberosAuthentication          no
+GSSAPIAuthentication            no
+ChallengeResponseAuthentication no
+
+Subsystem      sftp             /usr/lib/openssh/sftp-server
 EOF"
 sudo service ssh restart
 
