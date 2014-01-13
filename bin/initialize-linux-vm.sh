@@ -140,11 +140,12 @@ pip install pygments
 #
 # Ruby things
 #
-git clone https://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-build
+git clone git://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-build
+git clone git://github.com/jamis/rbenv-gemset.git     ~/.rbenv/plugins/rbenv-gemset
 PATH="$PATH:$HOME/.rbenv/shims:$HOME/.rbenv/bin"
 rbenv install 1.9.3-p484
 gem install bundler
-
+rbenv rehash
 
 #
 # Install pwntools
@@ -157,17 +158,18 @@ sudo ./install.sh
 # Set up metasploit
 #
 cd ~
-git clone https://github.com/rapid7/metasploit-framework.git
+git clone git://github.com/rapid7/metasploit-framework.git
 cd metasploit-framework
 git checkout release
 gem install bundler
+rbenv rehash
 bundle install
 
 #
 # Set up binwalk
 #
 cd ~
-git clone https://github.com/devttys0/binwalk.git
+git clone git://github.com/devttys0/binwalk.git
 cd binwalk/src
 sudo easy_install.sh
 rm -rf /tmp/binwalk
@@ -175,4 +177,5 @@ rm -rf /tmp/binwalk
 #
 # Use zsh
 #
-sudo chsh -s $(which zsh) $(whoami)
+chsh -s $(which zsh)
+
