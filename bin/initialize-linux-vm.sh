@@ -142,7 +142,7 @@ pip install pygments
 #
 git clone https://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-build
 PATH="$PATH:$HOME/.rbenv/shims:$HOME/.rbenv/bin"
-rbenv install ruby-1.9.3-p484
+rbenv install 1.9.3-p484
 gem install bundler
 
 
