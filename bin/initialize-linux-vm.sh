@@ -13,8 +13,8 @@ sudo sed -i.backup 's/us.archive.ubuntu.com/mirror.anl.gov/g' /etc/apt/sources.l
 #
 # Binaries and prerequisites
 #
-sudo apt-get -q update
-sudo apt-get -y -q dist-upgrade
+sudo apt-get -qq update
+sudo apt-get -y -qq dist-upgrade
 
 while read -r package;
 do sudo apt-get install -qq --yes $package
@@ -53,6 +53,7 @@ patch
 qemu-system-arm
 realpath
 shellnoob
+silversearcher-ag
 ssh
 subversion
 tk-dev
@@ -77,20 +78,19 @@ EOF"
 sudo service ssh restart
 
 #
-# Put the IP address on the login screen#
-sudo touch /etc/network/if-up.d/issue
-sudo chmod 777 /etc/network/if-up.d/issue
-cat >>/etc/network/if-up.d/issue <<EOF
+# Put the IP address on the login screen
+#
+sudo sh -c "cat >/etc/network/if-up.d/issue <<EOF
 rm /etc/issue
 lsb_release -ds >> /etc/issue
 ifconfig eth0 \
-    | grep "inet addr" \
-    | grep -v "127.0.0.1"  \
+    | grep 'inet addr' \
+    | grep -v '127.0.0.1'  \
     | awk '{ print \$2 }' \
-    | awk -F: '{ print "ip address " \$2 }' \
+    | awk -F: '{ print \"ip address \" \$2 }' \
     >> /etc/issue
 echo '\\\\n \\l' >> /etc/issue
-EOF
+EOF"
 sudo chmod 755 /etc/network/if-up.d/issue
 
 
@@ -149,8 +149,9 @@ sudo ./install.sh
 #
 # Set up metasploit
 #
+cd ~
 git clone https://github.com/rapid7/metasploit-framework.git
-cd ~/metasploit-framework
+cd metasploit-framework
 git checkout release
 gem install bundler
 bundle install
@@ -158,8 +159,10 @@ bundle install
 #
 # Set up binwalk
 #
+cd ~
 git clone https://github.com/devttys0/binwalk.git
-sudo binwalk/src/easy_install.sh
+cd binwalk
+sudo src/easy_install.sh
 rm -rf /tmp/binwalk
 
 #
