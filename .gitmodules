@@ -1,18 +1,18 @@
 [submodule "pwntools"]
 	path = pwntools
-	url = https://github.com/pwnies/pwntools.git
+	url = git://github.com/pwnies/pwntools.git
 [submodule ".bash_it"]
 	path = .bash_it
-	url = https://github.com/zachriggle/bash-it.git
+	url = git://github.com/zachriggle/bash-it.git
 [submodule "metasploit-framework"]
 	path = metasploit-framework
-	url = https://github.com/rapid7/metasploit-framework.git
+	url = git://github.com/rapid7/metasploit-framework.git
 [submodule ".zprezto"]
 	path = .zprezto
-	url = https://github.com/zachriggle/prezto.git
+	url = git://github.com/zachriggle/prezto.git
 [submodule ".pyenv"]
 	path = .pyenv
 	url = git://github.com/yyuu/pyenv.git
 [submodule ".rbenv"]
 	path = .rbenv
-	url = https://github.com/sstephenson/rbenv.git
+	url = git://github.com/sstephenson/rbenv.git
