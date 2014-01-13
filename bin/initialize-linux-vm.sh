@@ -80,19 +80,17 @@ sudo service ssh restart
 #
 # Put the IP address on the login screen
 #
-sudo sh -c "cat >/etc/network/if-up.d/issue <<EOF
-rm /etc/issue
-lsb_release -ds >> /etc/issue
-ifconfig eth0 \
-    | grep 'inet addr' \
-    | grep -v '127.0.0.1'  \
-    | awk '{ print \$2 }' \
-    | awk -F: '{ print \"ip address \" \$2 }' \
-    >> /etc/issue
-echo '\\\\n \\l' >> /etc/issue
-EOF"
-sudo chmod 755 /etc/network/if-up.d/issue
-
+cat >issue <<EOF
+if [[ "\$reason" == "BOUND" ]];
+then
+    rm /etc/issue
+    lsb_release -ds       >> /etc/issue
+    echo \$new_ip_address >> /etc/issue
+    echo "\\n \\l"        >> /etc/issue
+fi
+EOF
+sudo chown root.root issue
+sudo mv    issue     /etc/dhcp/dhclient-enter-hooks.d
 
 #
 # Set up home directory repo
@@ -161,8 +159,8 @@ bundle install
 #
 cd ~
 git clone https://github.com/devttys0/binwalk.git
-cd binwalk
-sudo src/easy_install.sh
+cd binwalk/src
+sudo easy_install.sh
 rm -rf /tmp/binwalk
 
 #
