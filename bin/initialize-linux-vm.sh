@@ -143,7 +143,9 @@ pip install pygments
 git clone git://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-build
 git clone git://github.com/jamis/rbenv-gemset.git     ~/.rbenv/plugins/rbenv-gemset
 PATH="$PATH:$HOME/.rbenv/shims:$HOME/.rbenv/bin"
-rbenv install 1.9.3-p484
+rbenv install        1.9.3-p484
+rbenv gemset  create 1.9.3-p484 gems
+rbenv rehash
 gem install bundler
 rbenv rehash
 
@@ -171,7 +173,7 @@ bundle install
 cd ~
 git clone git://github.com/devttys0/binwalk.git
 cd binwalk/src
-sudo easy_install.sh
+sudo ./easy_install.sh
 rm -rf /tmp/binwalk
 
 #
