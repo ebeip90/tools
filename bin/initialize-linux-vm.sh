@@ -62,8 +62,8 @@ vim
 yodl
 zlib1g-dev
 zsh
-sudo apt-get --yes --silent autoremove
 EOF
+sudo apt-get --yes --silent autoremove
 
 
 #
