@@ -120,7 +120,7 @@ sudo mv    issue     /etc/dhcp/dhclient-enter-hooks.d
 #
 cd ~
 git init
-git remote add origin https://github.com/zachriggle/tools.git
+git remote add origin git://github.com/zachriggle/tools.git
 git pull -f origin master
 git reset --hard
 git submodule update --init --recursive
