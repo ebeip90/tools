@@ -3,9 +3,14 @@
 #
 # Setup script for Ubuntu and Debian VMs.
 # TinyURL: This script is available at:
-# $ wget http://goo.gl/3e2B0
+# $ wget https://goo.gl/3e2B0
 # $ bash 3e2B0
 #
+
+#
+# Fail early
+#
+set -e
 
 #
 # Default mirrors are sloooooooow
@@ -79,6 +84,7 @@ sudo apt-get --yes --silent autoremove
 #
 # Configure SSH for pubkey only
 #
+sudo mv /etc/ssh/sshd_config{,.original}
 sudo sh -c "cat > /etc/ssh/sshd_config <<EOF
 Protocol                        2
 Port                            22
@@ -119,9 +125,9 @@ sudo mv    issue     /etc/dhcp/dhclient-enter-hooks.d
 cd ~
 git init
 git remote add origin https://github.com/zachriggle/tools.git
-git pull --quiet -f origin master
+git pull -f origin master
 git reset --hard
-git submodule --quiet update --init --recursive
+git submodule update --init --recursive
 
 #
 # Force pyenv for this script
@@ -163,19 +169,29 @@ rbenv rehash
 # Install pwntools
 #
 cd ~/pwntools
-sudo ./install.sh
+git pull origin master
+sudo bash ./install.sh
 
 
 #
 # Set up metasploit
 #
-cd ~
-git clone git://github.com/rapid7/metasploit-framework.git
-cd metasploit-framework
-git checkout release
-gem install bundler
-rbenv rehash
-bundle install
+# cd ~
+# git clone git://github.com/rapid7/metasploit-framework.git
+# cd metasploit-framework
+# git checkout release
+# gem install bundler
+# rbenv rehash
+# bundle install
+case "$(uname -m)" in
+    x86_64 )
+         metasploit_url="http://goo.gl/PwzxlC"
+    i386 )
+         metasploit_url="http://goo.gl/G9oxTe"
+esac
+wget  -O ./metasploit-installer "$metasploit_url"
+chmod +x ./metasploit-installer
+sudo     ./metasploit-installer --mode text --prefix metasploit --auto-update 1
 
 #
 # Set up binwalk
@@ -183,8 +199,7 @@ bundle install
 cd ~
 git clone git://github.com/devttys0/binwalk.git
 cd binwalk/src
-sudo ./easy_install.sh
-rm -rf /tmp/binwalk
+sudo bash ./easy_install.sh
 
 #
 # Use zsh
