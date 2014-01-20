@@ -27,7 +27,7 @@ sudo apt-get -q update
 sudo apt-get -y -q dist-upgrade
 
 while read -r package;
-do sudo apt-get install -q --yes $package
+do sudo apt-get install -q --yes $package || true
 done << EOF
 ack-grep
 binutils
@@ -60,8 +60,7 @@ openssh-blacklist
 openssh-blacklist-extra
 openssh-server
 patch
-qemu-system-arm || true
-qemu-system     || true
+qemu-system*
 realpath
 shellnoob
 silversearcher-ag
