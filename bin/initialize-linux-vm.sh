@@ -17,7 +17,8 @@
 #
 ubuntu="(us.)?archive.ubuntu.com"
 debian="ftp.(us.)?debian.org"
-sudo sed -i.original -E "s/($ubuntu|$debian)/mirror.anl.gov/g" /etc/apt/sources.list
+fast="us-east-1.ec2.archive.ubuntu.com"
+sudo sed -i.original -E "s/($ubuntu|$debian)/$fast/g" /etc/apt/sources.list
 
 
 #
