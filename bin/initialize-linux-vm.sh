@@ -4,13 +4,9 @@
 # Setup script for Ubuntu and Debian VMs.
 # TinyURL: This script is available at:
 # $ wget https://goo.gl/3e2B0
-# $ bash 3e2B0
+# $ bash -ex 3e2B0
 #
 
-#
-# Fail early
-#
-set -e
 
 #
 # Default mirrors are sloooooooow
@@ -44,7 +40,6 @@ gdb
 git-core
 libbz2-dev
 libexpat1-dev
-libgdb-dev
 libgdbm-dev
 libgmp-dev
 libncurses5-dev
