@@ -2,7 +2,9 @@
 
 #
 # Setup script for Ubuntu and Debian VMs.
-# TinyURL: This script is available at curl -L http://goo.gl/3e2B0 | bash
+# TinyURL: This script is available at:
+# $ wget http://goo.gl/3e2B0 
+# $ bash 3e2B0
 #
 
 # 
@@ -26,6 +28,7 @@ curl
 dissy
 emacs
 fortune
+gdb
 git-core
 libbz2-dev
 libexpat1-dev
