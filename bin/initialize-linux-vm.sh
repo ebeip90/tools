@@ -3,11 +3,11 @@
 #
 # Setup script for Ubuntu and Debian VMs.
 # TinyURL: This script is available at:
-# $ wget http://goo.gl/3e2B0 
+# $ wget http://goo.gl/3e2B0
 # $ bash 3e2B0
 #
 
-# 
+#
 # Default mirrors are sloooooooow
 #
 sudo sed -i.backup 's/us.archive.ubuntu.com/mirror.anl.gov/g' /etc/apt/sources.list
@@ -15,11 +15,11 @@ sudo sed -i.backup 's/us.archive.ubuntu.com/mirror.anl.gov/g' /etc/apt/sources.l
 #
 # Binaries and prerequisites
 #
-sudo apt-get -qq update
-sudo apt-get -y -qq dist-upgrade
+sudo apt-get -q update
+sudo apt-get -y -q dist-upgrade
 
 while read -r package;
-do sudo apt-get install -qq --yes $package
+do sudo apt-get install -q --yes $package
 done << EOF
 ack-grep
 binutils
