@@ -10,7 +10,14 @@
 #
 # Default mirrors are sloooooooow
 #
-sudo sed -i.backup 's/us.archive.ubuntu.com/mirror.anl.gov/g' /etc/apt/sources.list
+# us.archive.ubuntu.com => Ubuntu DVD install
+# archive.ubuntu.com    => DigitalOcean install
+# ftp.us.debian.org     => Debian DVD install
+#
+ubuntu="(us.)?archive.ubuntu.com"
+debian="ftp.(us.)?debian.org"
+sudo sed -i.original -E "s/($ubuntu|$debian)/mirror.anl.gov/g" /etc/apt/sources.list
+
 
 #
 # Binaries and prerequisites
