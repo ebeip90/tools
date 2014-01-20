@@ -60,7 +60,8 @@ openssh-blacklist
 openssh-blacklist-extra
 openssh-server
 patch
-qemu-system-arm
+qemu-system-arm || true
+qemu-system     || true
 realpath
 shellnoob
 silversearcher-ag
