@@ -4,8 +4,13 @@
 # Setup script for Ubuntu and Debian VMs.
 # TinyURL: This script is available at:
 # $ wget https://goo.gl/3e2B0
-# $ bash -ex 3e2B0
+# $ bash 3e2B0
 #
+
+#
+# Print commands as they're run, and fail on error.
+#
+set -ex
 
 #
 # Don't run as root
@@ -18,6 +23,10 @@ Run as a regular user with sudo access
 EOF
 fi
 
+if [ ! -f /etc/sudoers.d/$USER ]; then
+sudo bash -c "echo '$USER ALL=(ALL:ALL) NOPASSWD: ALL' >> /etc/sudoers.d/user"
+fi
+
 #
 # Default mirrors are sloooooooow
 #
@@ -28,7 +37,8 @@ fi
 ubuntu="(us.)?archive.ubuntu.com"
 debian="ftp.(us.)?debian.org"
 fast="us-east-1.ec2.archive.ubuntu.com"
-sudo sed -i.original -E "s/($ubuntu|$debian)/$fast/g" /etc/apt/sources.list
+sudo mv -n /etc/apt/sources.list{,.original}
+sudo sed -i -E "s/($ubuntu|$debian)/$fast/g" /etc/apt/sources.list
 
 
 #
