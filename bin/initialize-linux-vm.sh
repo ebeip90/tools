@@ -203,7 +203,8 @@ case "$(uname -m)" in
 esac
 wget  -O ./metasploit-installer "$metasploit_url"
 chmod +x ./metasploit-installer
-sudo     ./metasploit-installer --mode unattended --prefix metasploit
+sudo     ./metasploit-installer --mode unattended
+rm       ./metasploit-installer
 
 #
 # Set up binwalk
