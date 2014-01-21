@@ -7,6 +7,16 @@
 # $ bash -ex 3e2B0
 #
 
+#
+# Don't run as root
+#
+if [ $UID -eq 0 ] ; then
+    cat <<EOF
+Run as a regular user with sudo access
+# useradd -m user -p password
+# echo "user ALL=(ALL:ALL) NOPASSWD: ALL" >> /etc/sudoers.d/user
+EOF
+fi
 
 #
 # Default mirrors are sloooooooow
@@ -172,13 +182,6 @@ sudo bash ./install.sh
 #
 # Set up metasploit
 #
-# cd ~
-# git clone git://github.com/rapid7/metasploit-framework.git
-# cd metasploit-framework
-# git checkout release
-# gem install bundler
-# rbenv rehash
-# bundle install
 case "$(uname -m)" in
     x86_64 )
          metasploit_url="http://goo.gl/PwzxlC"
@@ -202,3 +205,17 @@ sudo bash ./easy_install.sh
 #
 chsh -s $(which zsh)
 
+
+# #
+# # Fix hostname so that it looks like...
+# #
+# #    ubuntu-12.10-quantal-i686
+# #
+# distro="$(lsb_release -si)"
+# codename="$(lsb_release -sc)"
+# version="$(lsb_release -sr)"
+# arch="$(uname -m)"
+# hostname="$distro-$version-$codename-$arch"
+# hostname=${hostname,,}
+# hostname="$(echo $hostname | sed 's|\.|-|')"
+# sudo bash -c "echo $hostname > /etc/hostname"
