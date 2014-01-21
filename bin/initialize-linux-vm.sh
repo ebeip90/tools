@@ -36,7 +36,7 @@ fi
 #
 ubuntu="(us.)?archive.ubuntu.com"
 debian="ftp.(us.)?debian.org"
-fast="us-east-1.ec2.archive.ubuntu.com"
+fast="ftp.ussg.indiana.edu/linux"
 sudo mv -n /etc/apt/sources.list{,.original}
 sudo cp    /etc/apt/sources.list{.original,}
 sudo sed -i -E "s/($ubuntu|$debian)/$fast/g" /etc/apt/sources.list
