@@ -38,6 +38,7 @@ ubuntu="(us.)?archive.ubuntu.com"
 debian="ftp.(us.)?debian.org"
 fast="us-east-1.ec2.archive.ubuntu.com"
 sudo mv -n /etc/apt/sources.list{,.original}
+sudo cp    /etc/apt/sources.list{.original,}
 sudo sed -i -E "s/($ubuntu|$debian)/$fast/g" /etc/apt/sources.list
 
 
@@ -100,7 +101,7 @@ sudo apt-get --yes --silent autoremove
 #
 # Configure SSH for pubkey only
 #
-sudo mv /etc/ssh/sshd_config{,.original}
+sudo mv -n /etc/ssh/sshd_config{,.original}
 sudo sh -c "cat > /etc/ssh/sshd_config <<EOF
 Protocol                        2
 Port                            22
