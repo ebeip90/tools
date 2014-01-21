@@ -48,7 +48,9 @@ sudo sed -i -E "s/($ubuntu|$debian)/$fast/g" /etc/apt/sources.list
 sudo apt-get -q update
 sudo apt-get -y -q dist-upgrade
 
-install() { sudo apt-get install -q --yes $1 || true }
+install() {
+    sudo apt-get install -q --yes $1 || true
+}
 install ack-grep
 install binutils
 install build-essential
