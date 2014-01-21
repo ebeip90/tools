@@ -194,14 +194,16 @@ sudo bash ./install.sh
 # Set up metasploit
 #
 case "$(uname -m)" in
-    x86_64 )
-         metasploit_url="http://goo.gl/PwzxlC"
-    i386 )
+    "x86_64" )
          metasploit_url="http://goo.gl/G9oxTe"
+         ;;
+    "i686" )
+         metasploit_url="http://goo.gl/PwzxlC"
+         ;;
 esac
 wget  -O ./metasploit-installer "$metasploit_url"
 chmod +x ./metasploit-installer
-sudo     ./metasploit-installer --mode text --prefix metasploit --auto-update 1
+sudo     ./metasploit-installer --mode unattended --prefix metasploit
 
 #
 # Set up binwalk
