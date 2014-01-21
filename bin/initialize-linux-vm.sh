@@ -194,12 +194,8 @@ sudo bash ./install.sh
 # Set up metasploit
 #
 case "$(uname -m)" in
-    "x86_64" )
-         metasploit_url="http://goo.gl/G9oxTe"
-         ;;
-    "i686" )
-         metasploit_url="http://goo.gl/PwzxlC"
-         ;;
+    "x86_64" ) metasploit_url="http://goo.gl/G9oxTe" ;;
+    "i686" )   metasploit_url="http://goo.gl/PwzxlC" ;;
 esac
 wget  -O ./metasploit-installer "$metasploit_url"
 chmod +x ./metasploit-installer
