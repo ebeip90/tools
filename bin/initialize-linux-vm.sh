@@ -48,58 +48,57 @@ sudo sed -i -E "s/($ubuntu|$debian)/$fast/g" /etc/apt/sources.list
 sudo apt-get -q update
 sudo apt-get -y -q dist-upgrade
 
-while read -r package;
-do sudo apt-get install -q --yes $package || true
-done << EOF
-ack-grep
-binutils
-build-essential
-curl
-dissy
-emacs
-fortune
-gdb
-git-core
-libbz2-dev
-libexpat1-dev
-libgdbm-dev
-libgmp-dev
-libncurses5-dev
-libncursesw5-dev
-libpcap-dev
-libpng-dev
-libpq-dev
-libreadline6-dev
-libsqlite3-dev
-libssl-dev
-libxml2
-libxml2-dev
-libxslt1-dev
-linux-headers-$(uname -r)
-nasm
-openssh-blacklist
-openssh-blacklist-extra
-openssh-server
-patch
-qemu-system*
-realpath
-shellnoob
-silversearcher-ag
-ssh
-subversion
-tk-dev
-tree
-vim
-yodl
-zlib1g-dev
-zsh
-EOF
+install() { sudo apt-get install -q --yes $1 || true }
+install ack-grep
+install binutils
+install build-essential
+install curl
+install dissy
+install emacs
+install fortune
+install gdb
+install git-core
+install libbz2-dev
+install libexpat1-dev
+install libgdbm-dev
+install libgmp-dev
+install libncurses5-dev
+install libncursesw5-dev
+install libpcap-dev
+install libpng-dev
+install libpq-dev
+install libreadline6-dev
+install libsqlite3-dev
+install libssl-dev
+install libxml2
+install libxml2-dev
+install libxslt1-dev
+install linux-headers-$(uname -r)
+install nasm
+install openssh-blacklist
+install openssh-blacklist-extra
+install openssh-server
+install patch
+install qemu-system*
+install realpath
+install shellnoob
+install silversearcher-ag
+install ssh
+install subversion
+install tk-dev
+install tree
+install vim
+install yodl
+install zlib1g-dev
+install zsh
+
 sudo apt-get --yes --silent autoremove
 
 
 #
 # Configure SSH for pubkey only
 #
+sudo service ssh restart
 sudo mv -n /etc/ssh/sshd_config{,.original}
 sudo sh -c "cat > /etc/ssh/sshd_config <<EOF
 Protocol                        2
