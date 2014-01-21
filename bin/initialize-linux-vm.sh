@@ -205,7 +205,6 @@ wget  -O ./metasploit-installer "$metasploit_url"
 chmod +x ./metasploit-installer
 sudo     ./metasploit-installer --mode unattended
 rm       ./metasploit-installer
-rehash
 
 #
 # Set up binwalk
@@ -218,8 +217,12 @@ sudo bash ./easy_install.sh
 #
 # Use zsh
 #
-chsh -s $(which zsh)
+sudo chsh -s $(which zsh) $(whoami)
 
+#
+# Reboot
+#
+sudo reboot
 
 # #
 # # Fix hostname so that it looks like...
