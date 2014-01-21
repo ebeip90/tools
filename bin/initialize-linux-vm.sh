@@ -77,7 +77,6 @@ libxml2-dev
 libxslt1-dev
 linux-headers-$(uname -r)
 nasm
-open-vm-tools
 openssh-blacklist
 openssh-blacklist-extra
 openssh-server
@@ -205,6 +204,7 @@ wget  -O ./metasploit-installer "$metasploit_url"
 chmod +x ./metasploit-installer
 sudo     ./metasploit-installer --mode unattended
 rm       ./metasploit-installer
+rehash
 
 #
 # Set up binwalk
