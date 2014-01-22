@@ -86,7 +86,6 @@ install patch
 install qemu-system*  || true
 install realpath
 install screen
-install shellnoob
 install silversearcher-ag
 install ssh
 install subversion
