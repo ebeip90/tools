@@ -21,10 +21,11 @@ Run as a regular user with sudo access
 # useradd -m user -p password
 # echo "user ALL=(ALL:ALL) NOPASSWD: ALL" >> /etc/sudoers.d/user
 EOF
+    exit
 fi
 
 if [ ! -f /etc/sudoers.d/$USER ]; then
-sudo bash -c "echo '$USER ALL=(ALL:ALL) NOPASSWD: ALL' >> /etc/sudoers.d/user"
+sudo bash -c "echo '$USER ALL=(ALL:ALL) NOPASSWD: ALL' >> /etc/sudoers.d/$USER"
 fi
 
 #
