@@ -202,6 +202,7 @@ wget  -O ./metasploit-installer "$metasploit_url"
 chmod +x ./metasploit-installer
 sudo     ./metasploit-installer --mode unattended
 rm       ./metasploit-installer
+sudo     update-rc.d metasploit disable
 
 #
 # Set up binwalk
