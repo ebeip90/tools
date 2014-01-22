@@ -46,11 +46,11 @@ sudo sed -i -E "s/($ubuntu|$debian)/$fast/g" /etc/apt/sources.list
 #
 # Binaries and prerequisites
 #
-sudo apt-get -q update
-sudo apt-get -y -q dist-upgrade
+sudo apt-get -qq update
+sudo apt-get -y -qq dist-upgrade
 
 install() {
-    sudo apt-get install -q --yes $1 || true
+    sudo apt-get install -qq --yes $1
 }
 install ack-grep
 install binutils
@@ -61,6 +61,7 @@ install emacs
 install fortune
 install gdb
 install git-core
+install irssi
 install libbz2-dev
 install libexpat1-dev
 install libgdbm-dev
@@ -82,8 +83,9 @@ install openssh-blacklist
 install openssh-blacklist-extra
 install openssh-server
 install patch
-install qemu-system*
+install qemu-system*  || true
 install realpath
+install screen
 install shellnoob
 install silversearcher-ag
 install ssh
@@ -143,9 +145,9 @@ sudo mv    issue     /etc/dhcp/dhclient-enter-hooks.d
 cd ~
 git init
 git remote add origin git://github.com/zachriggle/tools.git
-git pull -f origin master
-git reset --hard
-git submodule update --init --recursive
+git pull -q -f origin master
+git reset -q --hard
+git submodule update -q --init --recursive
 
 #
 # Force pyenv for this script
