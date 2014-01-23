@@ -35,12 +35,11 @@ fi
 # archive.ubuntu.com    => DigitalOcean install
 # ftp.us.debian.org     => Debian DVD install
 #
-ubuntu="(us.)?archive.ubuntu.com"
-debian="ftp.(us.)?debian.org"
-fast="mirrors.mit.edu"
+slow="(ftp|https?)://.*/(ubuntu|debian)"
+fast="\1://mirrors.mit.edu/\2"
 sudo mv -n /etc/apt/sources.list{,.original}
 sudo cp    /etc/apt/sources.list{.original,}
-sudo sed -i -E "s/($ubuntu|$debian)/$fast/g" /etc/apt/sources.list
+sudo sed -i -E "s $slow $fast i" /etc/apt/sources.list
 
 
 #
@@ -50,7 +49,7 @@ sudo apt-get -qq update
 sudo apt-get -y -qq dist-upgrade
 
 install() {
-    sudo apt-get install -qq --yes $1
+    sudo apt-get install -qq --yes $*
 }
 install ack-grep
 install binutils
@@ -61,6 +60,7 @@ install emacs
 install fortune
 install gdb
 install git-core
+install htop || true
 install irssi
 install libbz2-dev
 install libexpat1-dev
@@ -78,6 +78,7 @@ install libxml2
 install libxml2-dev
 install libxslt1-dev
 install linux-headers-$(uname -r)
+install mercurial
 install nasm
 install openssh-blacklist
 install openssh-blacklist-extra
@@ -86,7 +87,7 @@ install patch
 install qemu-system*  || true
 install realpath
 install screen
-install silversearcher-ag
+install silversearcher-ag || true
 install ssh
 install subversion
 install tk-dev
@@ -212,6 +213,8 @@ cd ~
 git clone git://github.com/devttys0/binwalk.git
 cd binwalk/src
 sudo bash ./easy_install.sh
+cd ~
+sudo rm -rf binwalk
 
 #
 # Use zsh
