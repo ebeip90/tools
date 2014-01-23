@@ -37,7 +37,7 @@ fi
 #
 ubuntu="(us.)?archive.ubuntu.com"
 debian="ftp.(us.)?debian.org"
-fast="ftp.ussg.indiana.edu\/linux"
+fast="mirrors.mit.edu"
 sudo mv -n /etc/apt/sources.list{,.original}
 sudo cp    /etc/apt/sources.list{.original,}
 sudo sed -i -E "s/($ubuntu|$debian)/$fast/g" /etc/apt/sources.list
