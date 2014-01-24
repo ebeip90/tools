@@ -42,6 +42,8 @@
 #
 
 # __________________gdb options_________________
+set     follow-fork-mode child
+handle  SIGALRM print nopass 
 
 # set to 1 to have ARM target debugging as default, use the "arm" command to switch inside gdb
 set $ARM = 0
