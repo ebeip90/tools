@@ -80,6 +80,7 @@ install libxslt1-dev
 install linux-headers-$(uname -r)
 install mercurial
 install nasm
+install nmap
 install openssh-blacklist
 install openssh-blacklist-extra
 install openssh-server
@@ -91,6 +92,7 @@ install silversearcher-ag || true
 install ssh
 install subversion
 install tk-dev
+install tmux
 install tree
 install vim
 install yodl
