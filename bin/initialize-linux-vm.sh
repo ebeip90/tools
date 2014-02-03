@@ -63,6 +63,7 @@ install git-core
 install htop || true
 install irssi
 install libbz2-dev
+install libc6-dev\*
 install libexpat1-dev
 install libgdbm-dev
 install libgmp-dev
@@ -168,12 +169,16 @@ pyenv local 2.7.6
 #
 # Python things
 #
+pip install pygments
+
+# N.B. All of the following are required by pwntools
 pip install ipython
 pip install numpy
 pip install matplotlib
 pip install gmpy
 pip install sympy
-pip install pygments
+pip install requests
+pip install pycrypto
 
 #
 # Ruby things
