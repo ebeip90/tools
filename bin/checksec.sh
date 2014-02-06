@@ -499,7 +499,7 @@ FS_binary_check() {
 
   for FS_elem_functions in $(seq 0 $((${#FS_functions[@]} - 1)))
   do
-    if [[ ${FS_functions[$FS_elem_functions]} =~ _chk ]] ; then
+    if grep -q _chk <<<${FS_functions[$FS_elem_functions]} ; then
       printf "\033[32mYes\033[m\n"
       return
     fi
@@ -521,11 +521,11 @@ FS_comparison() {
       FS_tmp_func=${FS_functions[$FS_elem_functions]}
       FS_tmp_libc=${FS_chk_func_libc[$FS_elem_libc]}
 
-      if [[ $FS_tmp_func =~ ^$FS_tmp_libc$ ]] ; then
+      if egrep -q "^$FS_tmp_libc$" <<<$FS_tmp_func  ; then
         printf " \033[31m%-30s\033[m | __%s%s\n" $FS_tmp_func $FS_tmp_libc $FS_end
         let FS_cnt_total++
         let FS_cnt_unchecked++
-      elif [[ $FS_tmp_func =~ ^$FS_tmp_libc(_chk) ]] ; then
+      elif egrep -q "^$FS_tmp_libc(_chk)" <<<$FS_tmp_func ; then
         printf " \033[32m%-30s\033[m | __%s%s\n" $FS_tmp_func $FS_tmp_libc $FS_end
         let FS_cnt_total++
         let FS_cnt_checked++
@@ -593,7 +593,7 @@ case "$1" in
       else
         # ELF executable?
         out=`file $N`
-        if [[ ! $out =~ ELF ]] ; then
+        if ! egrep -q ELF <<<$out ; then
            if [ "$verbose" = "true" ] ; then
              printf "\033[34m*** Not an ELF file: $tempdir/"
              file $N
@@ -634,7 +634,7 @@ case "$1" in
   fi
   # ELF executable?
   out=`file $2`
-  if [[ ! $out =~ ELF ]] ; then
+  if ! egrep -q ELF <<<$out ; then
     printf "\033[31mError: Not an ELF file: "
     file $2
     printf "\033[m\n"
@@ -662,7 +662,7 @@ case "$1" in
   nxcheck 
   printf "         COMMAND    PID RELRO             STACK CANARY           NX/PaX        PIE\n"
   for N in [1-9]*; do
-    if [ $N != $$ ] && readlink -q $N/exe > /dev/null; then
+    if [ $N != $$ ] && readlink $N/exe > /dev/null; then
       printf "%16s" `head -1 $N/status | cut -b 7-`
       printf "%7d " $N
       proccheck $N
@@ -791,7 +791,7 @@ case "$1" in
   fi
   # ELF executable?
   out=`file $2`
-  if [[ ! $out =~ ELF ]] ; then
+  if ! egrep -q ELF <<<$out ; then
     printf "\033[31mError: Not an ELF file: "
     file $2
     printf "\033[m\n"
