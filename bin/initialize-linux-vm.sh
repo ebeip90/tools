@@ -48,9 +48,7 @@ sudo sed -i -E "s $slow $fast i" /etc/apt/sources.list
 sudo apt-get -qq update
 sudo apt-get -y -qq dist-upgrade
 
-install() {
-    sudo apt-get install -qq --yes $*
-}
+install() { sudo apt-get install -qq --yes $* }
 install ack-grep
 install binutils
 install build-essential
@@ -255,7 +253,8 @@ cd binwalk
 ./configure
 make dependencies
 make
-sudo make install
+sudo make install       # uses system python
+python setup.py install # uses pyenv  python
 cd ~
 sudo rm -rf binwalk
 
