@@ -1,65 +1,32 @@
 #!/bin/sh
 
-cd /usr/ports/*/subversion
-make clean
-make batch=yes install clean
+install() {
+    cd /usr/ports/*/$1
+    make clean
+    make batch=yes install clean
+}
 
+# Install subversion first, then update the available ports
+install subversion
 cd /usr/ports
 svn update
 
-cd /usr/ports/*/git
-make clean
-make batch=yes install clean
-
-cd /usr/ports/*/nc
-make clean
-make batch=yes install clean
-
-cd /usr/ports/*/vim
-make clean
-make batch=yes install clean
-
-cd /usr/ports/*/zsh
-make clean
-make batch=yes install clean
-
-cd /usr/ports/*/bash
-make clean
-make batch=yes install clean
-
-cd /usr/ports/*/nmap
-make clean
-make batch=yes install clean
-
-cd /usr/ports/*/nasm
-make clean
-make batch=yes install clean
-
-cd /usr/ports/*/gdb
-make clean
-make batch=yes install clean
-
-cd /usr/ports/*/llvm
-make clean
-make batch=yes install clean
-
-cd /usr/ports/*/bzip
-make clean
-make batch=yes install clean
-
-cd /usr/ports/*/binutils
-make clean
-make batch=yes install clean
-
-cd /usr/ports/*/py-matplotlib
-make clean
-make batch=yes install clean
+# Install things we want
+install git
+install nc
+install vim
+install zsh
+install bash
+install nmap
+install nasm
+install gdb
+install llvm
+install bzip
+install binutils
+install py-matplotlib
 
 
-
-
+# Audit the ports for security issues
 cd /usr/ports/*/portaudit
-
 rehash
-
 portaudit -Fda

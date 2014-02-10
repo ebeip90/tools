@@ -54,10 +54,14 @@ install() {
 install ack-grep
 install binutils
 install build-essential
+install cmake
 install curl
 install dissy
 install emacs
+install expect{,-dev}
 install fortune
+install gcc-arm-linux-\* || true
+install gcc-aarch64-linux-\* || true
 install gdb
 install git-core
 install htop || true
@@ -69,7 +73,7 @@ install libgdbm-dev
 install libgmp-dev
 install libncurses5-dev
 install libncursesw5-dev
-install libpcap-dev
+install libpcap0.8{,-dev}
 install libpng-dev
 install libpq-dev
 install libreadline6-dev
@@ -88,7 +92,6 @@ install openssh-server
 install patch
 install qemu-system*  || true
 install realpath
-install screen
 install silversearcher-ag || true
 install ssh
 install subversion
@@ -99,6 +102,20 @@ install vim
 install yodl
 install zlib1g-dev
 install zsh
+
+# GUI install?
+if dpkg -l xorg > /dev/null 2>&1; then
+    install compiz
+    install compiz-plugins
+    install compizconfig-settings-manager
+    install dconf-tools
+    install gnome-system-monitor
+
+    wget http://c758482.r82.cf2.rackcdn.com/sublime-text_build-3059_amd64.deb
+    wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+    sudo dpkg --install *.deb
+    rm -f *.deb
+fi
 
 sudo apt-get --yes --silent autoremove
 
@@ -147,8 +164,9 @@ sudo mv    issue     /etc/dhcp/dhclient-enter-hooks.d
 #
 cd ~
 git init
-git remote add origin git://github.com/zachriggle/tools.git
-git pull -q -f origin master
+git remote add origin https://github.com/zachriggle/tools.git
+git fetch -q --all
+git checkout -f master
 git reset -q --hard
 git submodule update -q --init --recursive
 
@@ -169,16 +187,23 @@ pyenv local 2.7.6
 #
 # Python things
 #
-pip install pygments
+pip_install() {
+    pip install --allow-all-external --allow-unverified $* $*
+}
+pip_install pygments
+pip_install pexpect
+pip_install hg+http://hg.secdev.org/scapy
 
 # N.B. All of the following are required by pwntools
-pip install ipython
-pip install numpy
-pip install matplotlib
-pip install gmpy
-pip install sympy
-pip install requests
-pip install pycrypto
+pip_install ipython
+pip_install numpy
+pip_install matplotlib
+pip_install gmpy
+pip_install sympy
+pip_install requests
+pip_install pycrypto
+pip_install argparse
+pip_install paramiko
 
 #
 # Ruby things
@@ -189,7 +214,10 @@ PATH="$PATH:$HOME/.rbenv/shims:$HOME/.rbenv/bin"
 rbenv install        1.9.3-p484
 rbenv gemset  create 1.9.3-p484 gems
 rbenv rehash
+
 gem install bundler
+gem install gist
+
 rbenv rehash
 
 #
@@ -197,29 +225,37 @@ rbenv rehash
 #
 cd ~/pwntools
 git pull origin master
-sudo bash ./install.sh
+# sudo bash ./install.sh
 
 
 #
 # Set up metasploit
 #
-case "$(uname -m)" in
-    "x86_64" ) metasploit_url="http://goo.gl/G9oxTe" ;;
-    "i686" )   metasploit_url="http://goo.gl/PwzxlC" ;;
-esac
-wget  -O ./metasploit-installer "$metasploit_url"
-chmod +x ./metasploit-installer
-sudo     ./metasploit-installer --mode unattended
-rm       ./metasploit-installer
-sudo     update-rc.d metasploit disable
+# case "$(uname -m)" in
+#     "x86_64" ) metasploit_url="http://goo.gl/G9oxTe" ;;
+#     "i686" )   metasploit_url="http://goo.gl/PwzxlC" ;;
+# esac
+# wget  -O ./metasploit-installer "$metasploit_url"
+# chmod +x ./metasploit-installer
+# sudo     ./metasploit-installer --mode unattended
+# rm       ./metasploit-installer
+# sudo     update-rc.d metasploit disable
+# sudo     service metasploit stop
+wget https://github.com/rapid7/metasploit-framework/archive/release.zip
+unzip release.zip
+cd metasploit-framework-*
+bundle install
 
 #
 # Set up binwalk
 #
 cd ~
 git clone git://github.com/devttys0/binwalk.git
-cd binwalk/src
-sudo bash ./easy_install.sh
+cd binwalk
+./configure
+make dependencies
+make
+sudo make install
 cd ~
 sudo rm -rf binwalk
 
