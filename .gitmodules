@@ -16,3 +16,6 @@
 [submodule ".rbenv"]
 	path = .rbenv
 	url = git://github.com/sstephenson/rbenv.git
+[submodule "peda"]
+	path = peda
+	url = https://github.com/longld/peda.git
