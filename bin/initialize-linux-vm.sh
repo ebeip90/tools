@@ -48,7 +48,9 @@ sudo sed -i -E "s $slow $fast i" /etc/apt/sources.list
 sudo apt-get -qq update
 sudo apt-get -y -qq dist-upgrade
 
-install() { sudo apt-get install -qq --yes $* }
+install() {
+    sudo apt-get install -qq --yes $*
+}
 install ack-grep
 install binutils
 install build-essential
@@ -58,8 +60,8 @@ install dissy
 install emacs
 install expect{,-dev}
 install fortune
-install gcc-arm-linux-\* || true
 install gcc-aarch64-linux-\* || true
+install gcc-arm-linux-\* || true
 install gdb
 install git-core
 install htop || true
@@ -81,21 +83,26 @@ install libxml2
 install libxml2-dev
 install libxslt1-dev
 install linux-headers-$(uname -r)
+install llvm-3.6 || install llvm
 install mercurial
 install nasm
 install nmap
+install ntp
 install openssh-blacklist
 install openssh-blacklist-extra
 install openssh-server
 install patch
 install qemu-system*  || true
+install rar
 install realpath
 install silversearcher-ag || true
+install socat
 install ssh
 install subversion
 install tk-dev
 install tmux
 install tree
+install uncrustify
 install vim
 install yodl
 install zlib1g-dev
@@ -108,6 +115,9 @@ if dpkg -l xorg > /dev/null 2>&1; then
     install compizconfig-settings-manager
     install dconf-tools
     install gnome-system-monitor
+    install eclipse
+    isntall wine1.7 winetricks
+
 
     wget http://c758482.r82.cf2.rackcdn.com/sublime-text_build-3059_amd64.deb
     wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
@@ -266,7 +276,17 @@ sudo chsh -s $(which zsh) $(whoami)
 #
 # Reboot
 #
-sudo reboot
+while true; do
+    read -p "Reboot?" yn
+    case $yn in
+        [Yy]* ) make install; break;;
+        [Nn]* ) exit;;
+        * ) echo "Please answer yes or no.";;
+    esac
+done
+
+echo "Press ENTER to reboot, or ctrl+C to skip"
+read && sudo reboot
 
 # #
 # # Fix hostname so that it looks like...
