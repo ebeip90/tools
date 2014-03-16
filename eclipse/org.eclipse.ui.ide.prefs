@@ -1,6 +1,8 @@
-#Tue Jan 25 15:46:46 EST 2011
-eclipse.preferences.version=1
-tipsAndTricks=true
-platformState=1285689917125
-quickStart=true
+CLOSE_UNRELATED_PROJECTS=true
+EXIT_PROMPT_ON_CLOSE_LAST_WINDOW=false
 PROBLEMS_FILTERS_MIGRATE=true
+TASKS_FILTERS_MIGRATE=true
+eclipse.preferences.version=1
+platformState=1373995478754
+quickStart=true
+tipsAndTricks=true

@@ -1,3 +1,8 @@
-#Fri Oct 08 10:40:06 EDT 2010
 eclipse.preferences.version=1
+lineNumberRuler=true
 overviewRuler_migration=migrated_3.1
+showCarriageReturn=false
+showEnclosedSpaces=false
+showLeadingSpaces=false
+showLineFeed=false
+spacesForTabs=true
