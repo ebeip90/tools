@@ -1,0 +1,14 @@
+#!/bin/bash
+printf "%-10s %s\n" "external" $(curl -s icanhazip.com)
+
+interfaces=$(ifconfig | grep -E '^\S+:' | cut -d: -f1)
+
+for interface in $interfaces;
+do
+	addrs=$(/sbin/ifconfig $interface | grep -E 'inet6?' | cut -f2 -d ' ')
+	for addr in $addrs;
+	do
+		addr=$(echo $addr | sed -E 's|(.*)%.*|\1|')
+		printf "%-10s %s\n" $interface $addr
+	done
+done
