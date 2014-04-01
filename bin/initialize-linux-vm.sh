@@ -201,6 +201,7 @@ pip_install() {
 pip_install pygments
 pip_install pexpect
 pip_install hg+http://hg.secdev.org/scapy
+pip_install tldr
 
 # N.B. All of the following are required by pwntools
 pip_install ipython
