@@ -107,6 +107,7 @@ install vim
 install yodl
 install zlib1g-dev
 install zsh
+install unzip
 
 # GUI install?
 if dpkg -l xorg > /dev/null 2>&1; then
