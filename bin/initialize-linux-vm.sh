@@ -266,7 +266,7 @@ cd ~
 git clone git://github.com/devttys0/binwalk.git
 cd binwalk
 ./configure
-make dependencies
+make deps # dependencies
 make
 sudo make install       # uses system python
 python setup.py install # uses pyenv  python
