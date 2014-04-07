@@ -266,6 +266,7 @@ cd ~
 git clone git://github.com/devttys0/binwalk.git
 cd binwalk
 ./configure
+isntall liblzma-dev || true # binwalk
 make deps # dependencies
 make
 sudo make install       # uses system python
