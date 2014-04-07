@@ -171,7 +171,8 @@ sudo mv    issue     /etc/dhcp/dhclient-enter-hooks.d
 # This should set up pyenv and a bunch of other things
 #
 cd ~
-rm  -rf .git
+[ -d .git ] && git submodule forach 'rm -rf $(pwd)'
+[ -d .git ] && rm -rf .git
 git init
 git remote add origin https://github.com/zachriggle/tools.git
 git fetch -q --all
