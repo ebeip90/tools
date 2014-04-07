@@ -268,7 +268,7 @@ cd binwalk
 ./configure
 isntall liblzma-dev || true # binwalk
 make deps # dependencies
-make
+echo Y | make
 sudo make install       # uses system python
 python setup.py install # uses pyenv  python
 cd ~
