@@ -171,12 +171,13 @@ sudo mv    issue     /etc/dhcp/dhclient-enter-hooks.d
 # This should set up pyenv and a bunch of other things
 #
 cd ~
+rm  -rf .git
 git init
 git remote add origin https://github.com/zachriggle/tools.git
 git fetch -q --all
 git checkout -f master
 git reset -q --hard
-git submodule update -q --init --recursive
+git submodule update -f -q --init --recursive
 
 #
 # Force pyenv for this script
