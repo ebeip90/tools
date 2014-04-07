@@ -256,6 +256,7 @@ git pull origin master
 wget https://github.com/rapid7/metasploit-framework/archive/release.zip
 unzip release.zip
 cd metasploit-framework-*
+gem install bundler # metasploit has its own gemset
 bundle install
 
 #
