@@ -281,16 +281,13 @@ sudo chsh -s $(which zsh) $(whoami)
 # Reboot
 #
 while true; do
-    read -p "Reboot?" yn
+    read -p "Reboot? [yn] " yn
     case $yn in
-        [Yy]* ) make install; break;;
-        [Nn]* ) exit;;
+        [Yy]* ) sudo reboot; break;;
+        [Nn]* ) break;;
         * ) echo "Please answer yes or no.";;
     esac
 done
-
-echo "Press ENTER to reboot, or ctrl+C to skip"
-read && sudo reboot
 
 # #
 # # Fix hostname so that it looks like...
