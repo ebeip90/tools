@@ -64,6 +64,9 @@ comp-lzo    yes
 push        "redirect-gateway def1 bypass-dhcp"
 push        "dhcp-option DNS 8.8.8.8"
 push        "dhcp-option DNS 8.8.4.4"
+# push        "redirect-gateway bypass-dhcp"
+# push        "route-metric 512"
+# push        "route 0.0.0.0 0.0.0.0"
 
 user        nobody
 group       nogroup
