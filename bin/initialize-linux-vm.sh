@@ -54,6 +54,7 @@ install() {
 install ack-grep
 install binutils
 install build-essential
+install clang-3.5 || install clang
 install cmake
 install curl
 install dissy
@@ -71,6 +72,7 @@ install libc6-dev\*
 install libexpat1-dev
 install libgdbm-dev
 install libgmp-dev
+install liblzma-dev
 install libncurses5-dev
 install libncursesw5-dev
 install libpcap0.8{,-dev}
@@ -79,6 +81,7 @@ install libpq-dev
 install libreadline6-dev
 install libsqlite3-dev
 install libssl-dev
+install libtool
 install libxml2
 install libxml2-dev
 install libxslt1-dev
