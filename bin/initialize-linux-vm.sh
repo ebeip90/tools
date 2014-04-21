@@ -111,13 +111,16 @@ install unzip
 
 # GUI install?
 if dpkg -l xorg > /dev/null 2>&1; then
+    sudo add-apt-repository ppa:ubuntu-wine/ppa -y
+    sudo apt-get update -qq
+
     install compiz
     install compiz-plugins
     install compizconfig-settings-manager
     install dconf-tools
     install gnome-system-monitor
     install eclipse
-    isntall wine1.7 winetricks
+    install wine1.7 winetricks
 
 
     wget http://c758482.r82.cf2.rackcdn.com/sublime-text_build-3059_amd64.deb
