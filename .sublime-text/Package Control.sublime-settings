@@ -1,0 +1,18 @@
+{
+	"git_binary": "C:\\git\\bin\\git.exe",
+	"installed_packages":
+	[
+		"AlignTab",
+		"MarkdownEditing",
+		"Package Control",
+		"Package Syncing",
+		"SFTP",
+		"SublimeCodeIntel",
+		"SublimeLinter",
+		"Table Cleaner",
+		"Theme - Afterglow",
+		"Theme - Soda",
+		"Theme - Sodarized",
+		"TrailingSpaces"
+	]
+}
