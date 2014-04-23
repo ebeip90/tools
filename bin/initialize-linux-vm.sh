@@ -52,6 +52,7 @@ install() {
     sudo apt-get install -qq --yes $*
 }
 install ack-grep
+install autoconf
 install binutils
 install build-essential
 install clang-3.5 || install clang
@@ -86,7 +87,7 @@ install libxml2
 install libxml2-dev
 install libxslt1-dev
 install linux-headers-$(uname -r)
-install llvm-3.6 || install llvm
+install llvm-3.5 || install llvm
 install mercurial
 install nasm
 install nmap
