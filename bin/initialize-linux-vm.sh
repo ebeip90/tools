@@ -127,8 +127,10 @@ if dpkg -l xorg > /dev/null 2>&1; then
     sudo debconf-set-selections <<EOF
 ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select true
 EOF
-
     install wine1.7 winetricks
+
+    gsettings set org.gnome.desktop.wm.preferences theme 'Greybird'
+    gsettings set org.gnome.desktop.wm.preferences titlebar-font 'Droid Sans 10'
 
 
     wget http://c758482.r82.cf2.rackcdn.com/sublime-text_build-3059_amd64.deb
