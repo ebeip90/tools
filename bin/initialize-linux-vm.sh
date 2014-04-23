@@ -123,6 +123,10 @@ if dpkg -l xorg > /dev/null 2>&1; then
     install dconf-tools
     install gnome-system-monitor
     # install eclipse # Don't install eclipse, since Ubuntu's is OLD
+    sudo debconf-set-selections <<EOF
+ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select true
+EOF
+
     install wine1.7 winetricks
 
 
