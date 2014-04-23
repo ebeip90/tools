@@ -122,7 +122,7 @@ if dpkg -l xorg > /dev/null 2>&1; then
     install compizconfig-settings-manager
     install dconf-tools
     install gnome-system-monitor
-    install eclipse
+    # install eclipse # Don't install eclipse, since Ubuntu's is OLD
     install wine1.7 winetricks
 
 
