@@ -72,7 +72,7 @@ install libc6-dev\*
 install libexpat1-dev
 install libgdbm-dev
 install libgmp-dev
-install liblzma-dev
+install liblzma-dev # binwalk
 install libncurses5-dev
 install libncursesw5-dev
 install libpcap0.8{,-dev}
@@ -245,7 +245,6 @@ cd ~/pwntools
 git pull origin master
 # sudo bash ./install.sh
 
-
 #
 # Set up metasploit
 #
@@ -259,6 +258,7 @@ git pull origin master
 # rm       ./metasploit-installer
 # sudo     update-rc.d metasploit disable
 # sudo     service metasploit stop
+cd ~
 wget https://github.com/rapid7/metasploit-framework/archive/release.zip
 unzip release.zip
 cd metasploit-framework-*
@@ -272,7 +272,6 @@ cd ~
 git clone git://github.com/devttys0/binwalk.git
 cd binwalk
 ./configure
-isntall liblzma-dev || true # binwalk
 make deps # dependencies
 echo Y | make
 sudo make install       # uses system python
