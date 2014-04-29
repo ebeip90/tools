@@ -55,7 +55,6 @@
       <property name="&lt;Super&gt;f" type="string" value="exo-open --launch FileManager"/>
       <property name="&lt;Primary&gt;Escape" type="string" value="xfce4-popup-whiskermenu"/>
       <property name="XF86Mail" type="string" value="exo-open --launch MailReader"/>
-      <property name="Print" type="string" value="xfce4-screenshooter -f"/>
       <property name="&lt;Primary&gt;&lt;Alt&gt;Escape" type="string" value="xkill"/>
       <property name="XF86Music" type="string" value="gmusicbrowser"/>
       <property name="XF86Display" type="string" value="xfce4-display-settings --minimal"/>
@@ -66,6 +65,7 @@
       <property name="&lt;Super&gt;4" type="string" value="gnumeric"/>
       <property name="&lt;Super&gt;m" type="string" value="exo-open --launch MailReader"/>
       <property name="override" type="bool" value="true"/>
+      <property name="Print" type="string" value="xfce4-screenshooter -rc"/>
     </property>
   </property>
   <property name="xfwm4" type="empty">
