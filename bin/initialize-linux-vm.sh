@@ -146,6 +146,7 @@ fi
 
 wget http://www.capstone-engine.org/download/2.1.2/capstone-2.1.2_$ARCH.deb
 sudo dpkg --install *.deb
+rm -rf *.deb
 
 sudo apt-get --yes --silent autoremove
 

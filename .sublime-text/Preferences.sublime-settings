@@ -5,9 +5,9 @@
 	"font_size": 10,
 	"ignored_packages":
 	[
+		"Stylus",
 		"Vintage",
-		"Markdown",
-		"Stylus"
+		"Markdown"
 	],
 	"theme": "Soda Dark 3.sublime-theme",
 	"translate_tabs_to_spaces": true,
