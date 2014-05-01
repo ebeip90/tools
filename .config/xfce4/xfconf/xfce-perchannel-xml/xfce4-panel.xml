@@ -60,7 +60,9 @@
       <property name="size-max" type="uint" value="22"/>
       <property name="names-visible" type="array">
         <value type="string" value="networkmanager applet"/>
+        <value type="string" value="google chrome"/>
         <value type="string" value="blueman-applet"/>
+        <value type="string" value="rescuetime"/>
       </property>
     </property>
     <property name="plugin-5" type="string" value="indicator">

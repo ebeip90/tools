@@ -123,6 +123,7 @@ if dpkg -l xorg > /dev/null 2>&1; then
     install compizconfig-settings-manager
     install dconf-tools
     install gnome-system-monitor
+    install rescuetime
     # install eclipse # Don't install eclipse, since Ubuntu's is OLD
     sudo debconf-set-selections <<EOF
 ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select true
@@ -137,9 +138,9 @@ EOF
         x86_64) ARCH="amd64" ;;
     esac
 
-    wget https://c758482.r82.cf2.rackcdn.com/sublime-text_build-3059_${ARCH}.deb
-    wget https://dl.google.com/linux/direct/google-chrome-stable_current_${ARCH}.deb
-    wget http://www.capstone-engine.org/download/2.1.2/capstone-2.1.2_${ARCH}.deb
+    wget http://c758482.r82.cf2.rackcdn.com/sublime-text_build-3059_$ARCH.deb
+    wget https://dl.google.com/linux/direct/google-chrome-stable_current_$ARCH.deb
+    wget http://www.capstone-engine.org/download/2.1.2/capstone-2.1.2_$ARCH.deb
     sudo dpkg --install *.deb
     rm -f *.deb
 fi
