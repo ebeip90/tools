@@ -113,6 +113,11 @@ install zlib1g-dev
 install zsh
 install unzip
 
+case "$(uname -m)" in
+    i686)   ARCH="i386" ;;
+    x86_64) ARCH="amd64" ;;
+esac
+
 # GUI install?
 if dpkg -l xorg > /dev/null 2>&1; then
     sudo add-apt-repository ppa:ubuntu-wine/ppa -y
@@ -133,17 +138,14 @@ EOF
     gsettings set org.gnome.desktop.wm.preferences theme 'Greybird'
     gsettings set org.gnome.desktop.wm.preferences titlebar-font 'Droid Sans 10'
 
-    case "$(uname -m)" in
-        i686)   ARCH="i386" ;;
-        x86_64) ARCH="amd64" ;;
-    esac
-
     wget http://c758482.r82.cf2.rackcdn.com/sublime-text_build-3059_$ARCH.deb
     wget https://dl.google.com/linux/direct/google-chrome-stable_current_$ARCH.deb
-    wget http://www.capstone-engine.org/download/2.1.2/capstone-2.1.2_$ARCH.deb
-    sudo dpkg --install *.deb
+
     rm -f *.deb
 fi
+
+wget http://www.capstone-engine.org/download/2.1.2/capstone-2.1.2_$ARCH.deb
+sudo dpkg --install *.deb
 
 sudo apt-get --yes --silent autoremove
 
