@@ -4,9 +4,9 @@
 export CC=clang
 export CXX=clang++
 export AR=llvm-ar
-export CFLAGS="-g -fsanitize=address"
-export CXXFLAGS="-g -fsanitize=address"
-export LDFLAGS="-fsanitize=address"
+export CFLAGS="$CFLAGS -g -fsanitize=address"
+export CXXFLAGS="$CXXFLAGS -g -fsanitize=address"
+export LDFLAGS="$LDFLAGS -fsanitize=address"
 
 # ASAN needs to know where llvm-symbolizer is
 for symbolizer in llvm-symbolizer{,-3.{4,5,6}};
