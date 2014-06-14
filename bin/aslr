@@ -1,4 +1,6 @@
-#!/bin/bash
+#!/usr/bin/env zsh
+
+autoload -U colors && colors
 
 case "$1" in
     on)  val=1 ;;
@@ -10,11 +12,11 @@ case "$1" in
     "")  val=$(cat /proc/sys/kernel/randomize_va_space) ;;
 esac
 
-text="on"
+text="ON"
 if [[ $val == 0 ]];
 then
-    text="off"
+    text="OFF"
 fi
 
-echo "ALSR is $text"
+echo "ALSR is $fg[red]$text$fg[none]"
 echo $val | sudo tee /proc/sys/kernel/randomize_va_space >> /dev/null
