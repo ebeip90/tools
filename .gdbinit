@@ -1,3 +1,3 @@
 source ~/peda/peda.py
-aslr
 checksec
+aslr

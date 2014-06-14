@@ -1,3 +1,29 @@
+#!/usr/bin/env python
+import subprocess
+import re
+import requests
+
+ifconfig = subprocess.check_output('ifconfig')
+
+ipaddr    = r'((?:[0-9]+\.?){4})'
+
+linux_if  = re.compile(r'\n(\S+)')
+linux_ip4 = re.compile(r'inet addr:' + ipaddr)
+
+mac_if    = re.compile('\n(\S+):')
+mac_ip4   = re.compile('inet ' + ipaddr)
+
+public    = requests.get('http://icanhazip.com').text.strip()
+
+interfaces = ['public'] + linux_if.findall(ifconfig)  + mac_if.findall(ifconfig)
+addresses  = [public]   + linux_ip4.findall(ifconfig) + mac_ip4.findall(ifconfig)
+
+for iface, addr in zip(interfaces, addresses):
+    print "%-10s %s" % (iface, addr)
+
+
+
+"""
 #!/bin/bash
 printf "%-10s %s\n" "external" $(curl -s icanhazip.com)
 
@@ -12,3 +38,4 @@ do
 		printf "%-10s %s\n" $interface $addr
 	done
 done
+"""
