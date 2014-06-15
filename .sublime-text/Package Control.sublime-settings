@@ -3,6 +3,9 @@
 	"installed_packages":
 	[
 		"AlignTab",
+		"Jade",
+		"JavaScript Refactor",
+		"Jedi - Python autocompletion",
 		"MarkdownEditing",
 		"Package Control",
 		"Package Syncing",
