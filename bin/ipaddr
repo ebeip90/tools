@@ -11,13 +11,12 @@ linux_if  = re.compile(r'(?:^|\n)([^:\s]+)')
 linux_ip4 = re.compile(r'inet addr:' + ipaddr)
 mac_ip4   = re.compile('inet ' + ipaddr)
 
-public    = requests.get('http://icanhazip.com').text.strip()
-
 interfaces = ['public'] + linux_if.findall(ifconfig)
 
 def get_ip(iface):
     if iface == 'public':
-        return requests.get('http://icanhazip.com').text.strip()
+        try:    return requests.get('http://icanhazip.com').text.strip()
+        except: return None
 
     ifconfig  = subprocess.check_output(['ifconfig',iface])
     addresses = linux_ip4.findall(ifconfig) + mac_ip4.findall(ifconfig)
