@@ -23,12 +23,16 @@ def callback(args, dir, files):
     for f in files:
         if splitext(f)[-1][1:] in args['ext']:
 
-            srcpath = join(dir, f)  
+            srcpath = join(dir, f)
 
             if not exists(dstpath):
                 os.makedirs(dstpath)
 
-            md5 = hashfile(srcpath)
+            try: md5 = hashfile(srcpath)
+            except:
+                print "Couldnt open %r, skipping" % srcpath
+                continue
+
             if md5 not in hashes:
                 shutil.copy(srcpath, dstpath)
                 hashes.append(md5)
