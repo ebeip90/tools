@@ -134,14 +134,14 @@ if dpkg -l xorg > /dev/null 2>&1; then
 ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select true
 EOF
     install wine1.7 winetricks
+    wget https://www.python.org/ftp/python/2.7.7/python-2.7.7.msi
+    wine msiexec /i python-2.7.7.msi /quiet  ALLUSERS=1
 
     gsettings set org.gnome.desktop.wm.preferences theme 'Greybird'
     gsettings set org.gnome.desktop.wm.preferences titlebar-font 'Droid Sans 10'
 
     wget http://c758482.r82.cf2.rackcdn.com/sublime-text_build-3059_$ARCH.deb
     wget https://dl.google.com/linux/direct/google-chrome-stable_current_$ARCH.deb
-
-    rm -f *.deb
 fi
 
 wget http://www.capstone-engine.org/download/2.1.2/capstone-2.1.2_$ARCH.deb
