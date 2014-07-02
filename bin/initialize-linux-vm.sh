@@ -129,6 +129,10 @@ if dpkg -l xorg > /dev/null 2>&1; then
     install dconf-tools
     install gnome-system-monitor
     install rescuetime
+    
+    wget http://ftp.ussg.iu.edu/eclipse/technology/epp/downloads/release/luna/R/eclipse-cpp-luna-R-linux-gtk-x86_64.tar.gz
+    tar xzf eclipse*gz
+    
     # install eclipse # Don't install eclipse, since Ubuntu's is OLD
     sudo debconf-set-selections <<EOF
 ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select true
@@ -140,6 +144,7 @@ EOF
     gsettings set org.gnome.desktop.wm.preferences theme 'Greybird'
     gsettings set org.gnome.desktop.wm.preferences titlebar-font 'Droid Sans 10'
 
+    wget https://www.rescuetime.com/installers/rescuetime_current_$ARCH.deb
     wget http://c758482.r82.cf2.rackcdn.com/sublime-text_build-3059_$ARCH.deb
     wget https://dl.google.com/linux/direct/google-chrome-stable_current_$ARCH.deb
 fi
@@ -148,6 +153,7 @@ wget http://www.capstone-engine.org/download/2.1.2/capstone-2.1.2_$ARCH.deb
 sudo dpkg --install *.deb
 rm -rf *.deb
 
+sudo apt-get -f    --silent install
 sudo apt-get --yes --silent autoremove
 
 
@@ -213,8 +219,9 @@ eval "$(pyenv init -)"
 #
 # Install a local version of Python.
 #
-pyenv install 2.7.6
-pyenv local 2.7.6
+pyenv install 2.7.7
+pyenv local   2.7.7
+pyenv global  2.7.7
 
 
 #
