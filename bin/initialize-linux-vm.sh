@@ -151,7 +151,6 @@ fi
 
 wget http://www.capstone-engine.org/download/2.1.2/capstone-2.1.2_$ARCH.deb
 sudo dpkg --install *.deb
-rm -rf *.deb
 
 sudo apt-get -f    --silent install
 sudo apt-get --yes --silent autoremove
@@ -263,13 +262,6 @@ gem install gist
 rbenv rehash
 
 #
-# Install pwntools
-#
-cd ~/pwntools
-git pull origin master
-# sudo bash ./install.sh
-
-#
 # Set up metasploit
 #
 # case "$(uname -m)" in
@@ -286,6 +278,7 @@ cd ~
 wget https://github.com/rapid7/metasploit-framework/archive/release.zip
 unzip release.zip
 cd metasploit-framework-*
+rm -f .ruby-version
 gem install bundler # metasploit has its own gemset
 bundle install
 
@@ -307,6 +300,11 @@ sudo rm -rf binwalk
 # Use zsh
 #
 sudo chsh -s $(which zsh) $(whoami)
+
+#
+# Clean up
+#
+rm -rf *.gz *.zip *.msi *.deb
 
 #
 # Reboot
