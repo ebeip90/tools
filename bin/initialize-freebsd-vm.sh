@@ -73,7 +73,7 @@ src_install gdb WITH="PYTHON"
 
 
 # Audit the ports for security issues
-cd /usr/ports/*/portaudit
+pkg install portaudit
 rehash
 portaudit -Fda
 
