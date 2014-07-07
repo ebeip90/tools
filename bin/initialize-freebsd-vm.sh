@@ -38,14 +38,10 @@ if [ $UID -eq 0 ] ; then
     cat <<EOF
 Run as a regular user with sudo access
 # useradd -m user -p password
-# echo "user ALL=(ALL:ALL) NOPASSWD: ALL" >> /etc/sudoers.d/user
+# echo "user ALL=(ALL:ALL) NOPASSWD: ALL" >> /usr/local/etc/sudoers.d/user
 EOF
     exit
 fi
-
-if [ ! -f /etc/sudoers.d/$USER ]; then
-echo "$USER ALL=(ALL:ALL) NOPASSWD: ALL" | sudo tee -a /etc/sudoers.d/$USE
-Rtfwdi
 
 cat <<EOF > /etc/rc.conf
 sshd_enable="YES"
