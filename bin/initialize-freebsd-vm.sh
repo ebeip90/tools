@@ -8,7 +8,7 @@ install() {
 
 # Set up ports and sudo
 portsnap fetch
-portsanp extract
+portsnap extract
 install sudo
 
 # Set things up as root
