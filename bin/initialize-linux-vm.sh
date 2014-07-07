@@ -95,6 +95,7 @@ install ntp
 install openssh-blacklist
 install openssh-blacklist-extra
 install openssh-server
+install openvpn
 install patch
 install qemu-system*  || true
 install rar
@@ -128,7 +129,8 @@ if dpkg -l xorg > /dev/null 2>&1; then
     install compizconfig-settings-manager
     install dconf-tools
     install gnome-system-monitor
-    install rescuetime
+    # install rescuetime
+    install network-manager-openvpn
     
     wget http://ftp.ussg.iu.edu/eclipse/technology/epp/downloads/release/luna/R/eclipse-cpp-luna-R-linux-gtk-x86_64.tar.gz
     tar xzf eclipse*gz
