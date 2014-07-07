@@ -20,12 +20,15 @@ src_install() {
 # Set up ports and sudo
 portsnap fetch
 portsnap extract
+
 src_install pkg
+install sudo
+
 
 # Set things up as root
 USER=user
 useradd
-sudo bash -c "echo '$USER ALL=(ALL:ALL) NOPASSWD: ALL' >> /etc/sudoers.d/$USER"
+echo '$USER ALL=(ALL:ALL) NOPASSWD: ALL' || tee /usr/local/etc/sudoers.d/$USER
 
 
 #
