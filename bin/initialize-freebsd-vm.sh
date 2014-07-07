@@ -1,5 +1,5 @@
 #!/bin/sh
-
+# Available at: http://goo.gl/24idVT
 install() {
     cd /usr/ports/*/$1
     shift
