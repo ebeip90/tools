@@ -1,6 +1,17 @@
 #!/bin/sh
 # Available at: http://goo.gl/24idVT
+
+
+#
+# Print commands as they're run, and fail on error.
+#
+set -ex
+
 install() {
+    pkg install $*
+}
+
+src_install() {
     cd /usr/ports/*/$1
     shift
     sudo make -DBATCH batch=yes install clean $*
@@ -9,17 +20,13 @@ install() {
 # Set up ports and sudo
 portsnap fetch
 portsnap extract
-install sudo
+src_install pkg
 
 # Set things up as root
 USER=user
 useradd
 sudo bash -c "echo '$USER ALL=(ALL:ALL) NOPASSWD: ALL' >> /etc/sudoers.d/$USER"
 
-#
-# Print commands as they're run, and fail on error.
-#
-set -ex
 
 #
 # Don't run as root
@@ -44,7 +51,7 @@ hostname=$(uname -n)_$(uname -m)
 EOF
 
 # Install things we want
-install compat6x
+install compat6x-i386
 install git
 install nc
 install vim
@@ -63,7 +70,7 @@ install the_silver_searcher
 install vim
 install p7zip
 install readline
-install gdb WITH="PYTHON"
+src_install gdb WITH="PYTHON"
 
 
 # Audit the ports for security issues
