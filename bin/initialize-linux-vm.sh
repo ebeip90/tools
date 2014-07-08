@@ -58,6 +58,8 @@ install build-essential
 install clang-3.5 || install clang
 install cmake
 install curl
+install libc6:i386
+install libc6-dbg:i386
 install dissy
 install emacs
 install expect{,-dev}
@@ -131,10 +133,10 @@ if dpkg -l xorg > /dev/null 2>&1; then
     install gnome-system-monitor
     # install rescuetime
     install network-manager-openvpn
-    
+
     wget http://ftp.ussg.iu.edu/eclipse/technology/epp/downloads/release/luna/R/eclipse-cpp-luna-R-linux-gtk-x86_64.tar.gz
     tar xzf eclipse*gz
-    
+
     # install eclipse # Don't install eclipse, since Ubuntu's is OLD
     sudo debconf-set-selections <<EOF
 ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select true
