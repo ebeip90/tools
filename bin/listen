@@ -19,7 +19,7 @@ a = p.parse_args()
 # a.tty=0
 
 prog   = 'socat'
-listen = 'tcp4-listen:%s,reuseaddr,fork' % a.port
+listen = 'tcp4-listen:%s,reuseaddr,fork,end-close' % a.port
 execu  = "exec:'%s'" % ' '.join(a.program + a.arguments)
 
 if a.tty:

@@ -92,6 +92,7 @@ install linux-headers-$(uname -r)
 install llvm-3.5 || install llvm
 install mercurial
 install nasm
+install netcat-traditional
 install nmap
 install ntp
 install openssh-blacklist
@@ -115,6 +116,8 @@ install yodl
 install zlib1g-dev
 install zsh
 install unzip
+
+sudo update-alternatives --set nc /bin/nc.traditional
 
 case "$(uname -m)" in
     i686)   ARCH="i386" ;;
