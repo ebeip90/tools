@@ -61,6 +61,7 @@ install curl
 install libc6:i386
 install libc6-dbg:i386
 install dissy
+install dpkg-dev
 install emacs
 install expect{,-dev}
 install fortune
@@ -118,6 +119,8 @@ install zsh
 install unzip
 
 sudo update-alternatives --set nc /bin/nc.traditional
+
+apt-get source libc6 # for debugging libc
 
 case "$(uname -m)" in
     i686)   ARCH="i386" ;;
