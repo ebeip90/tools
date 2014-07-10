@@ -113,6 +113,7 @@ install tmux
 install tree
 install uncrustify
 install vim
+install xfce4-terminal || true
 install yodl
 install zlib1g-dev
 install zsh
@@ -157,11 +158,6 @@ EOF
     wget https://www.rescuetime.com/installers/rescuetime_current_$ARCH.deb
     wget http://c758482.r82.cf2.rackcdn.com/sublime-text_build-3059_$ARCH.deb
     wget https://dl.google.com/linux/direct/google-chrome-stable_current_$ARCH.deb
-else
-    # if xorg wasn't installed already, this is a headless server.
-    # install xfce4-terminal (and xorg by extension) so that we can
-    # 'ssh -X' into the server for popping remote GDB/pwntools
-    isntall xfce4-terminal
 fi
 
 wget http://www.capstone-engine.org/download/2.1.2/capstone-2.1.2_$ARCH.deb
