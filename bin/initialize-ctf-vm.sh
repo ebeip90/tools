@@ -18,4 +18,8 @@ do
     chmod -R o-rwx     $dir
     chmod -R g-w       $dir
 done
-chmod o-rwx /tmp
+
+for dir in $(find / -type d \( -perm -o+w \) 2>/dev/null);
+do
+    chmod o-w $dir
+done
