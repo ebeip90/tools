@@ -3,13 +3,10 @@ set -ex
 
 cat > /etc/rc.local <<EOF
 mount -o remount,hidepid=2 /proc
+echo 3 > /proc/sys/kernel/yama/ptrace_scope
+exit
 EOF
-source /etc/rc.local
-
-cat > /etc/sysctl.d/10-ptrace.conf <<EOF
-kernel.yama.ptrace_scope = 3
-EOF
-sysctl -p /etc/sysctl.d/10-ptrace.conf
+bash /etc/rc.local
 
 cd /home
 for dir in $(ls);
