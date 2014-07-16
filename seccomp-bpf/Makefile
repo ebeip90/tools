@@ -1,3 +1,4 @@
 .phony:all
 all:
-	clang -o nokill main.c
+	clang -m32 -o nokill32 main.c
+	clang -m64 -o nokill64 main.c

@@ -228,11 +228,20 @@ struct arch_sigsys {
         BPF_JUMP(BPF_JMP+BPF_JEQ+BPF_K, SECCOMP_ARCH, 1, 0), \
         BPF_STMT(BPF_RET+BPF_K, SECCOMP_RET_KILL)
 
+#define VALIDATE_ARCHITECTURE_JUMP(ARCH, LABEL) \
+        BPF_STMT(BPF_LD+BPF_W+BPF_ABS, SECCOMP_ARCH_IDX), \
+        BPF_JUMP(BPF_JMP+BPF_JEQ+BPF_K, SECCOMP_ARCH, 1, 0), \
+        BPF_STMT(BPF_RET+BPF_K, SECCOMP_RET_KILL)
+
 #define EXAMINE_SYSCALL \
         BPF_STMT(BPF_LD+BPF_W+BPF_ABS, SECCOMP_NR_IDX)
 
 #define ALLOW_SYSCALL(name) \
         BPF_JUMP(BPF_JMP+BPF_JEQ+BPF_K, __NR_##name, 0, 1), \
+        BPF_STMT(BPF_RET+BPF_K, SECCOMP_RET_ALLOW)
+
+#define ALLOW_SYSCALL_NR(nr) \
+        BPF_JUMP(BPF_JMP+BPF_JEQ+BPF_K, nr, 0, 1), \
         BPF_STMT(BPF_RET+BPF_K, SECCOMP_RET_ALLOW)
 
 #if defined(__arm__) && (defined(__thumb__) || defined(__ARM_EABI__))
