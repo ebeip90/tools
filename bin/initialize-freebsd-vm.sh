@@ -134,3 +134,8 @@ gem install bundler
 gem install gist
 
 rbenv rehash
+
+#
+# Because fuck waiting for CTF binaries that don't SO_REUSEADDR
+#
+sysctl net.inet.tcp.nolocaltimewait=1
