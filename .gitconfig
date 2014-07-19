@@ -2,8 +2,9 @@
 	name = Zach Riggle
 	email = zach@riggle.me
 [alias]
-	lg     = log --all --graph --pretty=format:'%Cred%h%Creset -%C(cyan)%d%Creset %s %Cgreen(%cr)%Creset - %aN' --abbrev-commit --date=relative
-	simple = log --all --graph --pretty=format:'%Cred%h%Creset -%C(cyan)%d%Creset %s %Cgreen(%cr)%Creset - %aN' --abbrev-commit --date=relative --simplify-by-decoration 
+	lg     = log --graph --pretty=format:'%Cred%h%Creset -%C(cyan)%d%Creset %s %Cgreen(%cr)%Creset - %aN' --abbrev-commit --date=relative
+	lga    = log --all --graph --pretty=format:'%Cred%h%Creset -%C(cyan)%d%Creset %s %Cgreen(%cr)%Creset - %aN' --abbrev-commit --date=relative
+	simple = log --all --graph --pretty=format:'%Cred%h%Creset -%C(cyan)%d%Creset %s %Cgreen(%cr)%Creset - %aN' --abbrev-commit --date=relative --simplify-by-decoration
 	diff = diff --color
 	co = checkout
 	ct = checkout -t
@@ -24,7 +25,7 @@
 	status = auto
 [color "branch"]
 	current = yellow reverse
-	local = yellow 
+	local = yellow
 	remote = red
 [color "diff"]
 	meta = yellow bold

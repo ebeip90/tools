@@ -58,7 +58,10 @@ install build-essential
 install clang-3.5 || install clang
 install cmake
 install curl
+install libc6:i386
+install libc6-dbg:i386
 install dissy
+install dpkg-dev
 install emacs
 install expect{,-dev}
 install fortune
@@ -90,11 +93,13 @@ install linux-headers-$(uname -r)
 install llvm-3.5 || install llvm
 install mercurial
 install nasm
+install netcat-traditional
 install nmap
 install ntp
 install openssh-blacklist
 install openssh-blacklist-extra
 install openssh-server
+install openvpn
 install patch
 install qemu-system*  || true
 install rar
@@ -108,10 +113,15 @@ install tmux
 install tree
 install uncrustify
 install vim
+install xfce4-terminal || true
 install yodl
 install zlib1g-dev
 install zsh
 install unzip
+
+sudo update-alternatives --set nc /bin/nc.traditional
+
+apt-get source libc6 # for debugging libc
 
 case "$(uname -m)" in
     i686)   ARCH="i386" ;;
@@ -128,26 +138,32 @@ if dpkg -l xorg > /dev/null 2>&1; then
     install compizconfig-settings-manager
     install dconf-tools
     install gnome-system-monitor
-    install rescuetime
+    # install rescuetime
+    install network-manager-openvpn
+
+    wget http://ftp.ussg.iu.edu/eclipse/technology/epp/downloads/release/luna/R/eclipse-cpp-luna-R-linux-gtk-x86_64.tar.gz
+    tar xzf eclipse*gz
+
     # install eclipse # Don't install eclipse, since Ubuntu's is OLD
     sudo debconf-set-selections <<EOF
 ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select true
 EOF
     install wine1.7 winetricks
+    wget https://www.python.org/ftp/python/2.7.7/python-2.7.7.msi
+    wine msiexec /i python-2.7.7.msi /quiet  ALLUSERS=1
 
     gsettings set org.gnome.desktop.wm.preferences theme 'Greybird'
     gsettings set org.gnome.desktop.wm.preferences titlebar-font 'Droid Sans 10'
 
+    wget https://www.rescuetime.com/installers/rescuetime_current_$ARCH.deb
     wget http://c758482.r82.cf2.rackcdn.com/sublime-text_build-3059_$ARCH.deb
     wget https://dl.google.com/linux/direct/google-chrome-stable_current_$ARCH.deb
-
-    rm -f *.deb
 fi
 
 wget http://www.capstone-engine.org/download/2.1.2/capstone-2.1.2_$ARCH.deb
 sudo dpkg --install *.deb
-rm -rf *.deb
 
+sudo apt-get -f    --silent install
 sudo apt-get --yes --silent autoremove
 
 
@@ -168,6 +184,7 @@ PermitEmptyPasswords            no
 KerberosAuthentication          no
 GSSAPIAuthentication            no
 ChallengeResponseAuthentication no
+X11Forwarding                   yes
 
 Subsystem      sftp             /usr/lib/openssh/sftp-server
 EOF"
@@ -213,8 +230,9 @@ eval "$(pyenv init -)"
 #
 # Install a local version of Python.
 #
-pyenv install 2.7.6
-pyenv local 2.7.6
+pyenv install 2.7.7
+pyenv local   2.7.7
+pyenv global  2.7.7
 
 
 #
@@ -256,13 +274,6 @@ gem install gist
 rbenv rehash
 
 #
-# Install pwntools
-#
-cd ~/pwntools
-git pull origin master
-# sudo bash ./install.sh
-
-#
 # Set up metasploit
 #
 # case "$(uname -m)" in
@@ -279,6 +290,7 @@ cd ~
 wget https://github.com/rapid7/metasploit-framework/archive/release.zip
 unzip release.zip
 cd metasploit-framework-*
+rm -f .ruby-version
 gem install bundler # metasploit has its own gemset
 bundle install
 
@@ -300,6 +312,11 @@ sudo rm -rf binwalk
 # Use zsh
 #
 sudo chsh -s $(which zsh) $(whoami)
+
+#
+# Clean up
+#
+rm -rf *.gz *.zip *.msi *.deb
 
 #
 # Reboot

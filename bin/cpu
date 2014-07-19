@@ -1,0 +1,7 @@
+#!/usr/bin/env python
+import multiprocessing
+import socket
+
+h = socket.gethostname()
+n = multiprocessing.cpu_count()
+print "%s has %s CPU%s installed" % (h, n, '' if n == 1 else 's')

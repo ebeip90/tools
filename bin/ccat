@@ -1,2 +1,7 @@
 #!/bin/sh
-pygmentize -g $* | less -R
+if [ -t 1 ];
+then
+    pygmentize -g $* | less -R
+else
+    cat $*
+fi
