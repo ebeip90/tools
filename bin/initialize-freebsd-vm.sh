@@ -69,6 +69,7 @@ install the_silver_searcher
 install vim
 install p7zip
 install readline
+install htop
 src_install gdb WITH="PYTHON"
 
 
@@ -139,3 +140,16 @@ rbenv rehash
 # Because fuck waiting for CTF binaries that don't SO_REUSEADDR
 #
 sysctl net.inet.tcp.nolocaltimewait=1
+
+#
+# Compatibility
+#
+cat >> /etc/fstab <<EOF
+proc                /proc                        procfs    rw       0       0
+linproc             /compat/linux/proc           linprocfs rw,late  0       0
+
+
+EOF
+mkdir -p /usr/compat/linux/proc
+ln -s /usr/compat /compat
+mount linproc
