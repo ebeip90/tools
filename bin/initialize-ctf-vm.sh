@@ -1,6 +1,7 @@
 #!/bin/bash
 set -ex
 
+# Turn off ptrace and most procfs stuff
 cat > /etc/rc.local <<EOF
 mount -o remount,hidepid=2 /proc
 echo 3 > /proc/sys/kernel/yama/ptrace_scope
@@ -8,6 +9,8 @@ exit
 EOF
 bash /etc/rc.local
 
+# All home directories should be owned by root:$user,
+# and should only be readable by that user.
 cd /home
 for dir in $(ls);
 do
@@ -16,7 +19,6 @@ do
     chmod -R g-w       $dir
 done
 
-for dir in $(find / -type d \( -perm -o+w \) 2>/dev/null);
-do
-    chmod o-w $dir
-done
+# Disable world-write permissions for *everything*
+chmod -R o-w /
+
