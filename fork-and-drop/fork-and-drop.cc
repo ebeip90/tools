@@ -23,13 +23,12 @@ void drop_privs_user(char* username) {
 }
 
 char* fork_user = getenv("TARGET_USER");
-int   delay     = 0;
+int   delay     = atoi(getenv("DROP_DELAY") ? getenv("DROP_DELAY") : "0");
 
-int (*real_fork)();
 
 int fork() {
-    *(void**)&real_fork = dlsym(RTLD_NEXT, "fork");
-    int pid = real_fork();
+    int (*_fork)()  = (int(*)()) dlsym(RTLD_NEXT, "fork");
+    int pid = _fork();
 
     if(delay == 0) {
         if(0 == pid) {
