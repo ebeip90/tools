@@ -1,0 +1,1 @@
+sudo ./vmware-install.pl --default EULA_AGREED=yes
