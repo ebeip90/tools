@@ -22,7 +22,9 @@ done
 
 # Disable world-write permissions for *everything* except /tmp
 # chmod -R o-w /
-# chmod o+rwx  /tmp
+
+# Make it so that /tmp is writeable, but private
+chmod o-r+wx  /tmp
 
 # Nothing setuid outside of /home
 for file in $(find /  ! -path /home -type f -perm +6000 2>/dev/null);
