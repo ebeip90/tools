@@ -29,3 +29,9 @@ for file in $(find /  ! -path /home -type f -perm +6000 2>/dev/null);
 do
     chmod o-rwx $file
 done
+
+# Drop all outbound connections except root, and already-established connections
+iptables -F OUTPUT
+iptables -A OUTPUT -m owner --uid-owner root    -j ACCEPT
+iptables -A OUTPUT -m state --state ESTABLISHED -j ACCEPT
+iptables -A OUTPUT -j REJECT
