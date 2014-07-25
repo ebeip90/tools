@@ -35,3 +35,4 @@ iptables -F OUTPUT
 iptables -A OUTPUT -m owner --uid-owner root    -j ACCEPT
 iptables -A OUTPUT -m state --state ESTABLISHED -j ACCEPT
 iptables -A OUTPUT -j REJECT
+iptables-save > /etc/iptables.rules
