@@ -36,3 +36,9 @@ iptables -A OUTPUT -m owner --uid-owner root    -j ACCEPT
 iptables -A OUTPUT -m state --state ESTABLISHED -j ACCEPT
 iptables -A OUTPUT -j REJECT
 iptables-save > /etc/iptables.rules
+
+# useradd -u 5000 -m -s $(which nologin) ru1337
+# useradd -u 5001 -m -s $(which nologin) ll
+# useradd -u 5002 -m -s $(which nologin) postit
+# useradd -u 5003 -m -s $(which nologin) run_danbi
+# useradd -u 5004 -s $(which nologin) final_danbi
