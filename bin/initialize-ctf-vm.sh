@@ -27,6 +27,9 @@ do
     chmod o-rwx $file
 done
 
+# Except su/sudo
+chmod o+rx /bin/su /usr/bin/sudo
+
 # Drop all outbound connections except root, and already-established connections
 iptables -F OUTPUT
 iptables -A OUTPUT -m owner --uid-owner root    -j ACCEPT
