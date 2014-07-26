@@ -6,6 +6,7 @@ cat > /etc/rc.local <<EOF
 mount -o remount,hidepid=2 /proc
 echo 3 > /proc/sys/kernel/yama/ptrace_scope
 chmod 700 /proc
+chmod o-r+wx  /tmp
 exit
 EOF
 bash /etc/rc.local
@@ -19,12 +20,6 @@ do
     chmod -R o-rwx     $dir
     chmod -R g-w       $dir
 done
-
-# Disable world-write permissions for *everything* except /tmp
-# chmod -R o-w /
-
-# Make it so that /tmp is writeable, but private
-chmod o-r+wx  /tmp
 
 # Nothing setuid outside of /home
 for file in $(find /  ! -path /home -type f -perm +6000 2>/dev/null);
