@@ -28,7 +28,7 @@ do
 done
 
 # Except su/sudo
-chmod o+rx /bin/su /usr/bin/sudo
+chmod o+rx $(which su) $(which sudo)
 
 # Disable 'last'
 chmod o-r /var/*/{btmp,wtmp,utmp}
