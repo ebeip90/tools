@@ -30,6 +30,9 @@ done
 # Except su/sudo
 chmod o+rx /bin/su /usr/bin/sudo
 
+# Disable 'last'
+chmod o-r /var/*/{btmp,wtmp,utmp}
+
 # Drop all outbound connections except root, and already-established connections
 iptables -F OUTPUT
 iptables -A OUTPUT -m owner --uid-owner root    -j ACCEPT
