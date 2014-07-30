@@ -109,7 +109,7 @@ install silversearcher-ag || true
 install socat
 install ssh
 install subversion
-install tk-dev
+install tk-dev # required for ipython %paste
 install tmux
 install tree
 install uncrustify
