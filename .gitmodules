@@ -19,3 +19,6 @@
 [submodule "peda"]
 	path = peda
 	url = https://github.com/zachriggle/peda.git
+[submodule "z3"]
+	path = z3
+	url = https://github.com/zachriggle/z3.git
