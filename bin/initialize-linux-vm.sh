@@ -248,16 +248,9 @@ pip_install hg+http://hg.secdev.org/scapy || true # scapy is down
 pip_install tldr
 pip_install httpie
 
-# N.B. All of the following are required by pwntools
-pip_install ipython
-pip_install numpy
-pip_install matplotlib
-pip_install gmpy
-pip_install sympy
-pip_install requests
-pip_install pycrypto
-pip_install argparse
-pip_install paramiko
+cd ~/pwntools
+pip install -r requirements.txt
+cd ~
 
 #
 # Ruby things
