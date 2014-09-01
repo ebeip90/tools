@@ -231,9 +231,9 @@ eval "$(pyenv init -)"
 #
 # Install a local version of Python.
 #
-pyenv install 2.7.7
-pyenv local   2.7.7
-pyenv global  2.7.7
+pyenv install 2.7.8
+pyenv local   2.7.8
+pyenv global  2.7.8
 
 
 #
