@@ -12,8 +12,8 @@
 	"font_size": 11,
 	"ignored_packages":
 	[
-		"Vintage",
 		"Stylus",
+		"Vintage",
 		"Markdown"
 	],
 	"theme": "Soda Dark 3.sublime-theme",
