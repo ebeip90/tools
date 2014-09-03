@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=IDA Pro (32-bit)
+Exec=env WINEPREFIX="/home/user/.wine" wine C:\\\\Program\\ Files\\ \\(x86\\)\\\\IDA\\ 6.6\\\\idaq.exe 
+Type=Application
+StartupNotify=true
+Path=/home/user/.wine/dosdevices/c:/Program Files (x86)/IDA 6.6
+Icon=C794_idaq.0
+X-XFCE-Source=file:///home/user/Desktop/IDA%20Pro%20(32-bit).desktop

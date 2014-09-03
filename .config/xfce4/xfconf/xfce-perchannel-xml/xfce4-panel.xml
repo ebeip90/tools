@@ -41,6 +41,8 @@
         <value type="int" value="18"/>
         <value type="int" value="19"/>
         <value type="int" value="20"/>
+        <value type="int" value="14"/>
+        <value type="int" value="21"/>
         <value type="int" value="10"/>
       </property>
       <property name="autohide" type="bool" value="true"/>
@@ -124,6 +126,16 @@
     <property name="plugin-20" type="string" value="launcher">
       <property name="items" type="array">
         <value type="string" value="13981383607.desktop"/>
+      </property>
+    </property>
+    <property name="plugin-14" type="string" value="launcher">
+      <property name="items" type="array">
+        <value type="string" value="14097811121.desktop"/>
+      </property>
+    </property>
+    <property name="plugin-21" type="string" value="launcher">
+      <property name="items" type="array">
+        <value type="string" value="14097811282.desktop"/>
       </property>
     </property>
   </property>
