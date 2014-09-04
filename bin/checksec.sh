@@ -1,36 +1,36 @@
 #!/usr/bin/env bash
 #
-# The BSD License (http://www.opensource.org/licenses/bsd-license.php) 
+# The BSD License (http://www.opensource.org/licenses/bsd-license.php)
 # specifies the terms and conditions of use for checksec.sh:
 #
 # Copyright (c) 2009-2011, Tobias Klein.
 # All rights reserved.
 #
-# Redistribution and use in source and binary forms, with or without 
-# modification, are permitted provided that the following conditions 
+# Redistribution and use in source and binary forms, with or without
+# modification, are permitted provided that the following conditions
 # are met:
-# 
-# * Redistributions of source code must retain the above copyright 
+#
+# * Redistributions of source code must retain the above copyright
 #   notice, this list of conditions and the following disclaimer.
-# * Redistributions in binary form must reproduce the above copyright 
-#   notice, this list of conditions and the following disclaimer in 
-#   the documentation and/or other materials provided with the 
+# * Redistributions in binary form must reproduce the above copyright
+#   notice, this list of conditions and the following disclaimer in
+#   the documentation and/or other materials provided with the
 #   distribution.
-# * Neither the name of Tobias Klein nor the name of trapkit.de may be 
-#   used to endorse or promote products derived from this software 
+# * Neither the name of Tobias Klein nor the name of trapkit.de may be
+#   used to endorse or promote products derived from this software
 #   without specific prior written permission.
 #
-# THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS 
-# "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT 
-# LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS 
-# FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE 
-# COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, 
-# INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, 
-# BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS 
-# OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED 
-# AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, 
-# OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF 
-# THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH 
+# THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+# "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+# LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS
+# FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE
+# COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,
+# INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,
+# BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS
+# OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED
+# AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+# OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF
+# THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH
 # DAMAGE.
 #
 # Name    : checksec.sh
@@ -42,16 +42,16 @@
 #
 # Description:
 #
-# Modern Linux distributions offer some mitigation techniques to make it 
-# harder to exploit software vulnerabilities reliably. Mitigations such 
-# as RELRO, NoExecute (NX), Stack Canaries, Address Space Layout 
-# Randomization (ASLR) and Position Independent Executables (PIE) have 
-# made reliably exploiting any vulnerabilities that do exist far more 
-# challenging. The checksec.sh script is designed to test what *standard* 
-# Linux OS and PaX (http://pax.grsecurity.net/) security features are being 
+# Modern Linux distributions offer some mitigation techniques to make it
+# harder to exploit software vulnerabilities reliably. Mitigations such
+# as RELRO, NoExecute (NX), Stack Canaries, Address Space Layout
+# Randomization (ASLR) and Position Independent Executables (PIE) have
+# made reliably exploiting any vulnerabilities that do exist far more
+# challenging. The checksec.sh script is designed to test what *standard*
+# Linux OS and PaX (http://pax.grsecurity.net/) security features are being
 # used.
 #
-# As of version 1.3 the script also lists the status of various Linux kernel 
+# As of version 1.3 the script also lists the status of various Linux kernel
 # protection mechanisms.
 #
 # Credits:
@@ -59,11 +59,11 @@
 # Thanks to Brad Spengler (grsecurity.net) for the PaX support.
 # Thanks to Jon Oberheide (jon.oberheide.org) for the kernel support.
 # Thanks to Ollie Whitehouse (Research In Motion) for rpath/runpath support.
-# 
+#
 # Others that contributed to checksec.sh (in no particular order):
 #
 # Simon Ruderich, Denis Scherbakov, Stefan Kuttler, Radoslaw Madej,
-# Anthony G. Basile, Martin Vaeth and Brian Davis. 
+# Anthony G. Basile, Martin Vaeth and Brian Davis.
 #
 
 # global vars
@@ -78,11 +78,11 @@ FS_cnt_unchecked=0
 FS_chk_func_libc=0
 FS_functions=0
 FS_libc=0
- 
+
 # version information
 version() {
   echo "checksec v1.5, Tobias Klein, www.trapkit.de, November 2011"
-  echo 
+  echo
 }
 
 # help
@@ -165,7 +165,7 @@ filecheck() {
     echo -n -e '\033[31mNX disabled\033[m   '
   else
     echo -n -e '\033[32mNX enabled \033[m   '
-  fi 
+  fi
 
   # check for PIE support
   if readelf -h $1 2>/dev/null | grep -q 'Type:[[:space:]]*EXEC'; then
@@ -173,12 +173,12 @@ filecheck() {
   elif readelf -h $1 2>/dev/null | grep -q 'Type:[[:space:]]*DYN'; then
     if readelf -d $1 2>/dev/null | grep -q '(DEBUG)'; then
       echo -n -e '\033[32mPIE enabled  \033[m   '
-    else   
+    else
       echo -n -e '\033[33mDSO          \033[m   '
     fi
   else
     echo -n -e '\033[33mNot an ELF file\033[m   '
-  fi 
+  fi
 
   # check for rpath / run path
   if readelf -d $1 2>/dev/null | grep -q 'rpath'; then
@@ -251,7 +251,7 @@ proccheck() {
     echo -n -e '\033[31mNX disabled\033[m   '
   else
     echo -n -e '\033[32mNX enabled \033[m   '
-  fi 
+  fi
 
   # check for PIE support
   if readelf -h $1/exe 2>/dev/null | grep -q 'Type:[[:space:]]*EXEC'; then
@@ -259,7 +259,7 @@ proccheck() {
   elif readelf -h $1/exe 2>/dev/null | grep -q 'Type:[[:space:]]*DYN'; then
     if readelf -d $1/exe 2>/dev/null | grep -q '(DEBUG)'; then
       echo -n -e '\033[32mPIE enabled          \033[m   '
-    else   
+    else
       echo -n -e '\033[33mDynamic Shared Object\033[m   '
     fi
   else
@@ -270,9 +270,9 @@ proccheck() {
 # check mapped libraries
 libcheck() {
   libs=( $(awk '{ print $6 }' /proc/$1/maps | grep '/' | sort -u | xargs file | grep ELF | awk '{ print $1 }' | sed 's/:/ /') )
- 
+
   printf "\n* Loaded libraries (file information, # of mapped files: ${#libs[@]}):\n\n"
-  
+
   for element in $(seq 0 $((${#libs[@]} - 1)))
   do
     echo "  ${libs[$element]}:"
@@ -289,7 +289,7 @@ aslrcheck() {
     echo -n -e ':\033[33m insufficient privileges for PaX ASLR checks\033[m\n'
     echo -n -e '  Fallback to standard Linux ASLR check'
   fi
-  
+
   if cat /proc/1/status 2> /dev/null | grep -q 'PaX:'; then
     printf ": "
     if cat /proc/1/status 2> /dev/null | grep 'PaX:' | grep -q 'R'; then
@@ -318,7 +318,7 @@ aslrcheck() {
       echo -n -e '\033[31mNot supported\033[m\n'
     fi
     printf "  See the kernel file 'Documentation/sysctl/kernel.txt' for more details.\n\n"
-  fi 
+  fi
 }
 
 # check cpu nx flag
@@ -337,7 +337,7 @@ kernelcheck() {
   printf "  userspace processes, this option lists the status of kernel configuration\n"
   printf "  options that harden the kernel itself against attack.\n\n"
   printf "  Kernel config: "
- 
+
   if [ -f /proc/config.gz ] ; then
     kconfig="zcat /proc/config.gz"
     printf "\033[32m/proc/config.gz\033[m\n\n"
@@ -599,7 +599,7 @@ case "$1" in
              file $N
              printf "\033[m"
            fi
-        else 
+        else
           filecheck $N
           if [ `find $tempdir/$N \( -perm -004000 -o -perm -002000 \) -type f -print` ]; then
             printf "\033[37;41m%s%s\033[m" $2 $N
@@ -613,7 +613,7 @@ case "$1" in
   done
   exit 0
   ;;
- 
+
  --file)
   if [ $have_readelf -eq 0 ] ; then
     exit 1
@@ -640,6 +640,14 @@ case "$1" in
     printf "\033[m\n"
     exit 1
   fi
+
+  # check for UPX packing
+  if grep UPX $2 >/dev/null ; then
+    echo -e '\033[31mFile is UPX encoded \033[m'
+    exit 0
+  fi
+
+
   printf "RELRO           STACK CANARY      NX            PIE             RPATH      RUNPATH      FILE\n"
   filecheck $2
   if [ `find $2 \( -perm -004000 -o -perm -002000 \) -type f -print` ] ; then
@@ -659,7 +667,7 @@ case "$1" in
   printf "* System-wide ASLR"
   aslrcheck
   printf "* Does the CPU support NX: "
-  nxcheck 
+  nxcheck
   printf "         COMMAND    PID RELRO             STACK CANARY           NX/PaX        PIE\n"
   for N in [1-9]*; do
     if [ $N != $$ ] && readlink $N/exe > /dev/null; then
@@ -672,9 +680,9 @@ case "$1" in
   if [ ! -e /usr/bin/id ] ; then
     printf "\n\033[33mNote: If you are running 'checksec.sh' as an unprivileged user, you\n"
     printf "      will not see all processes. Please run the script as root.\033[m\n\n"
-  else 
+  else
     if !(root_privs) ; then
-      printf "\n\033[33mNote: You are running 'checksec.sh' as an unprivileged user.\n" 
+      printf "\n\033[33mNote: You are running 'checksec.sh' as an unprivileged user.\n"
       printf "      Too see all processes, please run the script as root.\033[m\n\n"
     fi
   fi
