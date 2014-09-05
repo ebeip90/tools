@@ -5,6 +5,8 @@ set -ex
 cat > /etc/rc.local <<EOF
 mount -o remount,hidepid=2 /proc
 echo 3 > /proc/sys/kernel/yama/ptrace_scope
+echo 2 > /proc/sys/kernel/randomize_va_space
+echo 1 > /proc/sys/kernel/modules_disabled
 chmod 700 /proc
 chmod o-r+wx  /tmp
 exit
