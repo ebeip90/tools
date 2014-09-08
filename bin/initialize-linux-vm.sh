@@ -225,7 +225,7 @@ git submodule update -f -q --init --recursive
 #
 # Force pyenv for this script
 #
-PYENV_ROOT="$HOME/.pyenv"
+PYENV_ROOT="$PWD/.pyenv"
 PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
 
@@ -258,7 +258,7 @@ cd ~
 #
 git clone git://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-build
 git clone git://github.com/jamis/rbenv-gemset.git     ~/.rbenv/plugins/rbenv-gemset
-PATH="$PATH:$HOME/.rbenv/shims:$HOME/.rbenv/bin"
+PATH="$PATH:$PWD/.rbenv/shims:$PWD/.rbenv/bin"
 rbenv install        1.9.3-p484
 rbenv gemset  create 1.9.3-p484 gems
 rbenv rehash
