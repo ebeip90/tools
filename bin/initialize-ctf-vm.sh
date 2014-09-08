@@ -41,7 +41,6 @@ EOF
 cat > /etc/sysctl.conf << EOF
 # fs.protected_hardlinks = 1
 # fs.protected_symlinks = 1
-kernel.modules_disabled = 1
 kernel.kptr_restrict = 1
 kernel.perf_event_paranoid = 2
 kernel.randomize_va_space = 2
