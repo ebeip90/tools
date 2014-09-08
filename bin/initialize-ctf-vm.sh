@@ -6,7 +6,7 @@ cat > /etc/rc.local <<EOF
 mount -o remount,hidepid=2 /proc
 chmod 700 /proc
 chmod o-r+wx  /tmp
-iptables -L
+iptables-restore < /etc/iptables.rules
 echo 1 > /proc/sys/kernel/modules_disabled
 exit
 EOF
