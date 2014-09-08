@@ -69,7 +69,7 @@ install gcc-aarch64-linux-\* || true
 install gcc-arm-linux-\* || true
 install gcc-multiarch || true
 install gdb
-install gdb-multiarg || true
+install gdb-multiarch || true
 install git-core
 install htop || true
 install irssi
