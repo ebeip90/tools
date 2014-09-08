@@ -58,8 +58,8 @@ install build-essential
 install clang-3.5 || install clang
 install cmake
 install curl
-install libc6:i386
-install libc6-dbg:i386
+install libc6:i386 || true
+install libc6-dbg:i386 || true
 install dissy
 install dpkg-dev
 install emacs
@@ -103,7 +103,7 @@ install openssh-server
 install openvpn
 install patch
 install qemu-system*  || true
-install rar
+install rar || true
 install realpath
 install silversearcher-ag || true
 install socat
