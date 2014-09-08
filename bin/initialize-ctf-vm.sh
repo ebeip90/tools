@@ -48,7 +48,7 @@ kernel.yama.ptrace_scope = 1
 net.ipv4.tcp_syncookies = 1
 net.ipv6.conf.all.disable_ipv6 = 1
 EOF
-
+sysctl --system
 
 
 # All home directories should be owned by root:$user,
