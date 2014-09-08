@@ -67,7 +67,7 @@ install expect{,-dev}
 install fortune
 install gcc-aarch64-linux-\* || true
 install gcc-arm-linux-\* || true
-intsall gcc-multiarch || true
+install gcc-multiarch || true
 install gdb
 install gdb-multiarg || true
 install git-core
