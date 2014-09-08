@@ -6,6 +6,8 @@ cat > /etc/rc.local <<EOF
 mount -o remount,hidepid=2 /proc
 chmod 700 /proc
 chmod o-r+wx  /tmp
+iptables
+echo 1 > /proc/sys/kernel/modules_disabled
 exit
 EOF
 bash /etc/rc.local
