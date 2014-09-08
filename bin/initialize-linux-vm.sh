@@ -295,6 +295,7 @@ bundle install
 cd ~
 git clone git://github.com/devttys0/binwalk.git
 cd binwalk
+autoreconf
 ./configure
 make deps # dependencies
 echo Y | make
