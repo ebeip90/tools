@@ -22,3 +22,6 @@
 [submodule "z3"]
 	path = z3
 	url = https://github.com/zachriggle/z3.git
+[submodule "private"]
+	path = private
+	url = git@github.com:zachriggle/private.git
