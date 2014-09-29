@@ -109,17 +109,9 @@ pip_install hg+http://hg.secdev.org/scapy || true # scapy is down
 pip_install tldr
 pip_install httpie
 
-# N.B. All of the following are required by pwntools
-pip_install ipython
-pip_install numpy
-pip_install matplotlib
-pip_install gmpy
-pip_install sympy
-pip_install requests
-pip_install pycrypto
-pip_install argparse
-pip_install paramiko
-
+cd ~/pwntools
+pip install -r requirements.txt
+cd ~
 
 #
 # Ruby things
@@ -147,9 +139,8 @@ sysctl net.inet.tcp.nolocaltimewait=1
 cat >> /etc/fstab <<EOF
 proc                /proc                        procfs    rw       0       0
 linproc             /compat/linux/proc           linprocfs rw,late  0       0
-
-
 EOF
+
 mkdir -p /usr/compat/linux/proc
 ln -s /usr/compat /compat
 mount linproc
