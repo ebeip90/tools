@@ -64,7 +64,7 @@ install nasm
 install autoconf
 install cmake
 install clang34
-isntall gcc49
+install gcc49
 install tree
 install bzip
 install binutils
