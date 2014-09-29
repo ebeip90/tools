@@ -8,7 +8,7 @@
 set -ex
 
 install() {
-    pkg install $*
+    pkg install --quiet --yes $*
 }
 
 src_install() {
