@@ -17,18 +17,21 @@ src_install() {
     sudo make -DBATCH batch=yes install clean $*
 }
 
-# Set up ports and sudo
-portsnap fetch
-portsnap extract
 
-src_install pkg
-install sudo
-
-
-# Set things up as root
-USER=user
-useradd
-echo '$USER ALL=(ALL:ALL) NOPASSWD: ALL' || tee /usr/local/etc/sudoers.d/$USER
+if ! which sudo >/dev/null; 
+then
+    # Set up ports and sudo
+    portsnap fetch
+    portsnap extract
+    
+    src_install pkg
+    install sudo
+    
+    # Set things up as root
+    
+    useradd
+    echo 'vagrant ALL=(ALL:ALL) NOPASSWD: ALL' || tee /usr/local/etc/sudoers.d/vagrant
+fi
 
 
 #
