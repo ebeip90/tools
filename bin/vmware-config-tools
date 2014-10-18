@@ -1,0 +1,1 @@
+sudo vmware-config-tools.pl --default EULA_AGREED=yes
