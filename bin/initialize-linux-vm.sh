@@ -29,6 +29,18 @@ sudo bash -c "echo '$USER ALL=(ALL:ALL) NOPASSWD: ALL' >> /etc/sudoers.d/$USER"
 fi
 
 #
+# Useful environment variables
+#
+
+case "$(uname -m)" in
+    i686)   ARCH="i386" ;;
+    x86_64) ARCH="amd64" ;;
+esac
+
+DISTRO=$(lsb_release -is)   # 'Ubuntu'
+RELEASE=$(lsb_release -cs)  # 'trusty'
+
+#
 # Default mirrors are sloooooooow
 #
 # us.archive.ubuntu.com => Ubuntu DVD install
@@ -121,14 +133,33 @@ install zlib1g-dev
 install zsh
 install unzip
 
+
+#
+# Configure automatic updates
+#
+# Automation
+install unattended-upgrades
+
+sudo tee /etc/apt/apt.conf.d/50unattended-upgrades << EOF
+Unattended-Upgrade::Allowed-Origins {
+        "$DISTRO $RELEASE-security";
+        "$DISTRO $RELEASE-updates";
+};
+EOF
+sudo tee /etc/apt/apt.conf.d/10periodic << EOF
+APT::Periodic::Update-Package-Lists "1";
+APT::Periodic::Download-Upgradeable-Packages "1";
+APT::Periodic::AutocleanInterval "7";
+APT::Periodic::Unattended-Upgrade "1";
+APT::Periodic::Unattended-Upgrade::Automatic-Reboot "true";
+EOF
+
+#
+# Required for 'nc -e'
+#
 sudo update-alternatives --set nc /bin/nc.traditional
 
 apt-get source libc6 # for debugging libc
-
-case "$(uname -m)" in
-    i686)   ARCH="i386" ;;
-    x86_64) ARCH="amd64" ;;
-esac
 
 # GUI install?
 if dpkg -l xorg > /dev/null 2>&1; then
@@ -143,7 +174,7 @@ if dpkg -l xorg > /dev/null 2>&1; then
     # install rescuetime
     install network-manager-openvpn
 
-    wget http://ftp.ussg.iu.edu/eclipse/technology/epp/downloads/release/luna/R/eclipse-cpp-luna-R-linux-gtk-x86_64.tar.gz
+    wget -nc http://ftp.ussg.iu.edu/eclipse/technology/epp/downloads/release/luna/R/eclipse-cpp-luna-R-linux-gtk-x86_64.tar.gz
     tar xzf eclipse*gz
 
     # install eclipse # Don't install eclipse, since Ubuntu's is OLD
@@ -151,19 +182,21 @@ if dpkg -l xorg > /dev/null 2>&1; then
 ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select true
 EOF
     install wine1.7 winetricks
-    wget https://www.python.org/ftp/python/2.7.7/python-2.7.7.msi
+    wget -nc https://www.python.org/ftp/python/2.7.7/python-2.7.7.msi
     wine msiexec /i python-2.7.7.msi /quiet  ALLUSERS=1
 
     gsettings set org.gnome.desktop.wm.preferences theme 'Greybird'
     gsettings set org.gnome.desktop.wm.preferences titlebar-font 'Droid Sans 10'
 
-    wget https://www.rescuetime.com/installers/rescuetime_current_$ARCH.deb
-    wget https://c758482.r82.cf2.rackcdn.com/sublime-text_build-3065_$ARCH.deb
-    wget https://dl.google.com/linux/direct/google-chrome-stable_current_$ARCH.deb
+    wget -nc https://www.rescuetime.com/installers/rescuetime_current_$ARCH.deb
+    wget -nc http://c758482.r82.cf2.rackcdn.com/sublime-text_build-3065_$ARCH.deb
+    wget -nc https://dl.google.com/linux/direct/google-chrome-stable_current_$ARCH.deb
 fi
 
-wget http://www.capstone-engine.org/download/2.1.2/capstone-2.1.2_$ARCH.deb
-sudo dpkg --install *.deb
+wget -nc http://www.capstone-engine.org/download/2.1.2/capstone-2.1.2_$ARCH.deb
+
+sudo dpkg --install *.deb || true
+sudo apt-get install -f
 
 sudo apt-get -f    --silent install
 sudo apt-get --yes --silent autoremove
@@ -178,6 +211,8 @@ sudo sh -c "cat > /etc/ssh/sshd_config <<EOF
 Protocol                        2
 Port                            22
 PubkeyAuthentication            yes
+
+Ciphers                         aes256-ctr
 
 UsePAM                          no
 PermitRootLogin                 no
@@ -245,7 +280,7 @@ pip_install() {
 }
 pip_install pygments
 pip_install pexpect
-pip_install hg+http://hg.secdev.org/scapy || true # scapy is down
+pip_install hg+http://hg.secdev.org/scapy || true # scapy apt-gis down
 pip_install tldr
 pip_install httpie
 
@@ -282,7 +317,7 @@ rbenv rehash
 # sudo     update-rc.d metasploit disable
 # sudo     service metasploit stop
 cd ~
-wget https://github.com/rapid7/metasploit-framework/archive/release.zip
+wget -nc https://github.com/rapid7/metasploit-framework/archive/release.zip
 unzip release.zip
 cd metasploit-framework-*
 rm -f .ruby-version
