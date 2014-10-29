@@ -146,7 +146,7 @@ Unattended-Upgrade::Allowed-Origins {
         "\${distro_id}:\${distro_codename}-updates";
 };
 
-Unattended-Upgrade::Mail "zachriggle@gmail.com";
+Unattended-Upgrade::Mail "root";
 Unattended-Upgrade::Automatic-Reboot "false";
 EOF
 sudo tee /etc/apt/apt.conf.d/10periodic << EOF
