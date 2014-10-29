@@ -142,16 +142,18 @@ install unattended-upgrades
 
 sudo tee /etc/apt/apt.conf.d/50unattended-upgrades << EOF
 Unattended-Upgrade::Allowed-Origins {
-        "$DISTRO $RELEASE-security";
-        "$DISTRO $RELEASE-updates";
+        "\${distro_id}:\${distro_codename}-security";
+        "\${distro_id}:\${distro_codename}-updates";
 };
+
+Unattended-Upgrade::Mail "zachriggle@gmail.com";
+Unattended-Upgrade::Automatic-Reboot "false";
 EOF
 sudo tee /etc/apt/apt.conf.d/10periodic << EOF
 APT::Periodic::Update-Package-Lists "1";
 APT::Periodic::Download-Upgradeable-Packages "1";
 APT::Periodic::AutocleanInterval "7";
 APT::Periodic::Unattended-Upgrade "1";
-APT::Periodic::Unattended-Upgrade::Automatic-Reboot "true";
 EOF
 
 #
