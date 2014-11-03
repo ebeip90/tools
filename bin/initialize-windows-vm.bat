@@ -28,3 +28,4 @@ choco install VisualStudio2013Professional
 choco install vlc
 choco install wget
 choco install windbg
+choco install windows-8-1-sdk
