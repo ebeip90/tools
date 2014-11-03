@@ -7,6 +7,7 @@ choco install curl
 choco install DotNet4.5
 choco install f.lux
 choco install fiddler
+choco install google-chrome-x64
 choco install googledrive
 choco install itunes
 choco install javaruntime
